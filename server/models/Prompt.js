@@ -2,10 +2,6 @@ const { Schema, model } = require('mongoose');
 
 // 
 const promptSchema = new Schema({
-    content: {
-        type: String,
-        required: true
-    },
     difficulty: {
         type: String,
         required: true
@@ -13,6 +9,9 @@ const promptSchema = new Schema({
     language: {
         type: String,
         required: true
+    },
+    prompt: {
+        type:String,       
     },
     question: {
         type:String,       
