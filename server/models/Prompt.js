@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-// 
+
 const promptSchema = new Schema({
     content: {
         type: String,
