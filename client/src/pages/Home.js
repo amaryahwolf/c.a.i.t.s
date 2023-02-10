@@ -8,14 +8,13 @@ import Qparams from "../components/Qparams";
 import { queries } from "../utils/queries";
 
 const Home = () => {
-  const { data } = useQuery(Qparams);
-  const questions = data?.questions || [];
+  
 
   return (
     <main>
       <div className="PH">
         <div className="PH">
-          <Qparams questions={questions} title="Blast Off!" />
+          Home
         </div>
       </div>
     </main>

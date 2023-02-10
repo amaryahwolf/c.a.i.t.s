@@ -1,11 +1,11 @@
 import React from "react";
 
-const Signup = () => {
+const Qparams = () => {
   return (
     <div className="PH">
-        Signup
+        Qparams
     </div>
   );
 };
 
-export default Signup;
+export default Qparams;
