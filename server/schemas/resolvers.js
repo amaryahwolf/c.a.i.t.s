@@ -1,6 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Prompt } = require('../models');
 const { signToken } = require('../utils/auth');
+const openAi = require("../config/ai");
+
+// Develop AI persona with prompt for initial user prompt
+let aiPrompt = 'I am a software developer interested in developing my coding skills through coding practice questions.';
 
 const resolvers = {
     Query: {
@@ -52,5 +56,45 @@ const resolvers = {
         },
         // Should we start to create AI routes here through prompts
         // making the prompts, saving  and deleting 
+        // CREATE routes with:
+        // prompt += req.body.difficulty
+        // prompt += req.body.topic
+        // prompt += req.body.language
+
+        // router.post("/makesuggestion", withAuth, async (req, res) => {
+        //   try {
+        //     prompt += req.body.ingredients;
+        //     prompt += req.body.restrictions;
+        //     prompt += req.body.detailsToConfirm;
+        //     let suggestionData = await openAi.createCompletion({
+        //       model: "text-davinci-003",
+        //       prompt: prompt,
+        //       max_tokens: 1000,
+        //       temperature: 0.7,
+        //     });
+        //     const suggestion = suggestionData.data.choices[0].text;
+        //     res.status(200).json({ suggestion });
+        //   } catch (err) {
+        //     res.status(500).json(err);
+        //   }
+        // });
+
+        addPrompt: async (parent, { difficulty, language, topic }, context) => {
+          if (context.user) {
+            const prompt = await Prompt.create({
+              difficulty,
+              language,
+              topic
+            });
+    
+            await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: { prompts: prompt._id } }
+            );
+    
+            return prompt;
+          }
+          throw new AuthenticationError('You need to be logged in!');
+        },
     },
 }
