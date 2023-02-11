@@ -13,6 +13,7 @@ type Prompt {
     _id: _id
     difficulty: String
     language: String
+    topic: String
     prompt: String
     question: String
     response: String
