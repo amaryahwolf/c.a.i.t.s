@@ -1,17 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Prompt } = require('../models');
+const { User, Explanation } = require('../models');
 const { signToken } = require('../utils/auth');
-const openAi = require("../config/ai");
+// const openAi = require("../config/ai");
 
-// Develop AI persona with prompt for initial user prompt
-let aiPrompt = 'I am a software developer interested in developing my coding skills through coding practice questions.';
 
 const resolvers = {
     Query: {
-    //   Explain: user getting their own prompts. save delete
+    //   Get user and all explanations associated with user
       me: async (parent, args, context) => {
         if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate('prompts');
+          return User.findOne({ _id: context.user._id }).populate('explanations');
         }
         throw new AuthenticationError('You need to be logged in!');
       },
@@ -40,22 +38,48 @@ const resolvers = {
           return { token, user };
         },
 
-        addPrompt: async (parent, { difficulty, language, topic }, context) => {
+        // Create new explanation with AI
+        // TODO: connect route to Explanation model and grab user input as question
+        // addExplanation: async (paren, { question, response }, context) => {
+        //   const response = await openAi.createCompletion({
+        //   model: "code-davinci-002",
+        //   prompt: //add user input (question),
+        //   temperature: 0,
+        //   max_tokens: 64,
+        //   top_p: 1.0,
+        //   frequency_penalty: 0.0,
+        //   presence_penalty: 0.0,
+        //   stop: ["\"\"\""],
+        //   });
+        // },
+        
+        // Update user with associated explanation
+        saveExplanation: async (parent, { explanationData }, context) => {
           if (context.user) {
-            const prompt = await Prompt.create({
-              difficulty,
-              language,
-              topic
-            });
     
             await User.findOneAndUpdate(
               { _id: context.user._id },
-              { $addToSet: { prompts: prompt._id } }
+              { $addToSet: { explanations: Explanation._id } }
             );
     
-            return prompt;
+            return Explanation;
           }
           throw new AuthenticationError('You need to be logged in!');
         },
-    },
-}
+
+        // Delete a user's associated explanation
+        removeExplanation: async (parent, { _id }, context) => {
+          if (context.user) {
+            const udpatedUser = await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $pull: { explanations: { _id } } },
+              { new: true }
+            );
+            return udpatedUser;
+          }
+          throw new AuthenticationError('You need to be logged in!');
+        }
+      }
+};
+
+module.exports = resolvers;
