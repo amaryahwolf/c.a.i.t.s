@@ -1,16 +1,17 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
+
+// gql doesnt have - very few types.
 
 const typeDefs = gql`
-type User {
-    _id: _id
+  type User {
+    _id: ID
     username: String
     email: String
-    password: String
     prompts: [Prompt]!
-}
+  }
 
-type Prompt {
-    _id: _id
+  type Prompt {
+    _id: ID
     difficulty: String
     language: String
     topic: String
@@ -18,23 +19,30 @@ type Prompt {
     question: String
     response: String
     feedback: String
-}
+  }
+  input Prompt {
+    difficulty: String
+    language: String!
+    topic: String
+    prompt: String
+    question: String
+    response: String
+    feedback: String
+  }
 
-type Auth {
+  type Auth {
     token: ID!
     user: User
-}
+  }
 
-# TODO: add queries
-type Query {
+  type Query {
+    me: User
+  }
 
-}
-
-# TODO: add mutations
-type Mutation {
-
-}
-
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+  }
 `;
 
 module.exports = typeDefs;

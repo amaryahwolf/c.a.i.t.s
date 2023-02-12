@@ -8,22 +8,7 @@ let aiPrompt = 'I am a software developer interested in developing my coding ski
 
 const resolvers = {
     Query: {
-      users: async () => {
-        return User.find().populate('prompts');
-      },
-      user: async (parent, { username }) => {
-        return User.findOne({ username }).populate('prompts');
-      },
-      // Trying to get all prompts form user. Do we still need this?
-      prompts: async (parent, { username }) => {
-        const params = username ? { username } : {};
-        return Prompt.find(params);
-      },
-      // Single prompt
-      prompt: async (parent, { promptId }) => {
-        return Prompt.findOne({ _id: promptId });
-      },
-      // Explain
+    //   Explain: user getting their own prompts. save delete
       me: async (parent, args, context) => {
         if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('prompts');
@@ -54,30 +39,6 @@ const resolvers = {
     
           return { token, user };
         },
-        // Should we start to create AI routes here through prompts
-        // making the prompts, saving  and deleting 
-        // CREATE routes with:
-        // prompt += req.body.difficulty
-        // prompt += req.body.topic
-        // prompt += req.body.language
-
-        // router.post("/makesuggestion", withAuth, async (req, res) => {
-        //   try {
-        //     prompt += req.body.ingredients;
-        //     prompt += req.body.restrictions;
-        //     prompt += req.body.detailsToConfirm;
-        //     let suggestionData = await openAi.createCompletion({
-        //       model: "text-davinci-003",
-        //       prompt: prompt,
-        //       max_tokens: 1000,
-        //       temperature: 0.7,
-        //     });
-        //     const suggestion = suggestionData.data.choices[0].text;
-        //     res.status(200).json({ suggestion });
-        //   } catch (err) {
-        //     res.status(500).json(err);
-        //   }
-        // });
 
         addPrompt: async (parent, { difficulty, language, topic }, context) => {
           if (context.user) {
