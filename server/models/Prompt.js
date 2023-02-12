@@ -14,18 +14,18 @@ const promptSchema = new Schema({
         type: String,
         required: true
     },
-    prompt: {
-        type:String,       
-    },
-    question: {
-        type:String,       
-    },
+    // prompt: {
+    //     type:String,       
+    // },
+    // question: {
+    //     type:String,       
+    // },
     response: {
         type: String,  
     },
-    feedback: {
-        type: String,
-    },
+    // feedback: {
+    //     type: String,
+    // },
 });
 
 const Prompt = model('Prompt', promptSchema);
