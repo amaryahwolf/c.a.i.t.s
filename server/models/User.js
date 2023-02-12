@@ -19,10 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  prompts: [
+  explanations: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Prompt",
+      ref: "Explanation",
     },
   ],
 });
