@@ -13,10 +13,8 @@ const typeDefs = gql`
     question: String
     response: String
   }
-  input Explanation {
-    _id: ID
+  input ExplanationInput {
     question: String
-    response: String
   }
 
   type Auth {
@@ -32,7 +30,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     # Add mutation for AI generated response
-    saveExplanation(explanationData: Explanation!): User
+    addExplanation(question: String): Explanation
     removeExplanation(explanationId: ID!): User
   }
 `;

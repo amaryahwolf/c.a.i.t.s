@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Explanation } = require('../models');
 const { signToken } = require('../utils/auth');
-// const openAi = require("../config/ai");
+const openAi = require("../config/ai");
 
 
 const resolvers = {
@@ -39,32 +39,29 @@ const resolvers = {
         },
 
         // Create new explanation with AI
-        // TODO: connect route to Explanation model and grab user input as question
-        // addExplanation: async (paren, { question, response }, context) => {
-        //   const response = await openAi.createCompletion({
-        //   model: "code-davinci-002",
-        //   prompt: //add user input (question),
-        //   temperature: 0,
-        //   max_tokens: 64,
-        //   top_p: 1.0,
-        //   frequency_penalty: 0.0,
-        //   presence_penalty: 0.0,
-        //   stop: ["\"\"\""],
-        //   });
-        // },
-        
-        // Update user with associated explanation
-        saveExplanation: async (parent, { explanationData }, context) => {
-          if (context.user) {
-    
-            await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $addToSet: { explanations: Explanation._id } }
-            );
-    
-            return Explanation;
-          }
-          throw new AuthenticationError('You need to be logged in!');
+        // TODO: connect route to Explanation model and grab user input(question) as prompt
+        addExplanation: async (parent, { question }, context) => {
+          console.log("We are adding explanations!")
+          const response = await openAi.createCompletion({
+          model: "code-davinci-002",
+          prompt: question,
+          temperature: 0,
+          max_tokens: 64,
+          top_p: 1.0,
+          frequency_penalty: 0.0,
+          presence_penalty: 0.0,
+          stop: ["\"\"\""],
+          });
+          const explanationData = await Explanation.create({
+            question,
+            response: response.data.choices[0].text
+          })
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { explanations: explanationData._id } }
+          );
+          console.log(response.data.choices[0].text)
+          return {question, response: response.data.choices[0].text}
         },
 
         // Delete a user's associated explanation
