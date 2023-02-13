@@ -12,16 +12,16 @@ const Header = () => {
   };
   return (
     <header className="headerPH">
-      <Navbar bg="danger" variant="dark">
+      <Navbar bg="" variant="dark">
         <Container>
-        <Image
+        <Image 
               alt="brianbot"
-              src="./images/logo3.jpg"
+              src="./images/logo4.jpg"
               width="100"
               height="80"
               className="d-inline-block align-top"
             />{" "}
-          <Navbar.Brand href="./Home">BrianBot</Navbar.Brand>
+          <Navbar.Brand href="./">BrianBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
               <Link className="PH">
