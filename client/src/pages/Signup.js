@@ -6,6 +6,46 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+const styles = {
+
+  alert: {
+    backgroundColor: 'violet',
+    color: 'white',
+  },
+
+  body: {
+    backgroundColor: 'white',
+    marginTop: '100px',
+    padding: '50px',
+    opacity: '0.8',
+    borderRadius: '20px',
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+
+  between: {
+    marginBottom: '40px',
+  },
+
+  submit: {
+    opacity: '1',
+    backgroundColor: 'deeppink',
+    borderColor: 'pink',
+    borderWidth: '1px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '40px',
+    display: 'block',
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    fontSize: '25px',
+    // fontFamily: "'Rubik Microbe', cursive",
+
+  },
+}
+
+
 const Signup = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
@@ -59,6 +99,8 @@ const Signup = () => {
       password: '',
     });
   };
+
+  
 
   return (
     <>

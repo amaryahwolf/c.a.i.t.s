@@ -40,12 +40,12 @@ const styles = {
     paddingLeft: '50px',
     paddingRight: '50px',
     fontSize: '25px',
-    // fontFamily: 'Rubik Microbe',
+    // fontFamily: "'Rubik Microbe', cursive",
 
   },
 
   // font: {
-  //   fontFamily: "'Rubik Microbe', cursive",
+    // fontFamily: "'Rubik Microbe', cursive",
   // },
 }
     // check if form has everything (as per react-bootstrap docs)
@@ -135,7 +135,8 @@ const Login = () => {
         disabled={!(userFormData.email && userFormData.password)}
         type='submit'
         variant='success'
-        style={styles.submit}>
+        style={styles.submit}
+        className='font'>
         Submit
       </Button>
     </>
