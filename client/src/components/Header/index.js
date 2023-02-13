@@ -21,7 +21,7 @@ const Header = () => {
               height="80"
               className="d-inline-block align-top"
             />{" "}
-          <Navbar.Brand href="./Home">BrianBot</Navbar.Brand>
+          <Navbar.Brand href="./">BrianBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
               <Link className="PH">
