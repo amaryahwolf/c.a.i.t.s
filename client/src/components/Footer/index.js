@@ -1,20 +1,25 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import{Container, Navbar} from 'react-bootstrap';
 
 const Footer = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
   return (
-    <footer className="PH">
-      <div className="PH">
-        {location.pathname !== "/" && (
-          <button className="PH" onClick={() => navigate(-1)}>
-            Go Back
-          </button>
-        )}
-        <h4>Hop back on Commander!</h4>
-      </div>
-    </footer>
+    <>
+   
+  <Navbar bg="dark" variant="dark">
+    <Container>
+      <Navbar.Brand href="#home">
+        <img
+          alt=""
+          src="/brianbotlogo.png"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />{' '}
+        
+      </Navbar.Brand>
+    </Container>
+  </Navbar>
+  </>
   );
 };
 

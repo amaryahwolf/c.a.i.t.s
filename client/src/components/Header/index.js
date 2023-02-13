@@ -1,4 +1,4 @@
-import { assertValidSchema } from "graphql";
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from 'react-bootstrap';
@@ -12,17 +12,9 @@ const Header = () => {
   };
   return (
     <header className="headerPH">
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="danger" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">BrianBot</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#Login">Login</Nav.Link>
-            <Nav.Link href="#Signup">Signup</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
-        <div>
+          <Navbar.Brand href="./Home">BrianBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
               <Link className="PH">
@@ -34,15 +26,14 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="PH" to="/login">
-                Login
-              </Link>
-              <Link className="PH" to="/signup">
-                Signup
-              </Link>
+              <Nav className="me-auto">
+            <Nav.Link href="./Login" to="./Login">Login</Nav.Link>
+            <Nav.Link href="./Signup" to="./Signup">Signup</Nav.Link>
+          </Nav>
             </>
           )}
-        </div>
+        </Container>
+      </Navbar>
      
     </header>
   );
