@@ -1,23 +1,20 @@
 //importing react and the {useQuery}
 import React from "react";
-import { useQuery } from "@apollo/client";
-
-//importing Qparams from components
-import Qparams from "../components/Qparams";
-
-import { queries } from "../utils/queries";
-
+import { Container, Card } from 'react-bootstrap';
 const Home = () => {
   
 
   return (
-    <main>
-      <div className="PH">
-        <div className="PH">
-          Home
-        </div>
-      </div>
-    </main>
+    <>
+      <Container fluid>
+        <p>Welcome baack~</p>
+      </Container>
+      <Container fluid>
+      <Card fluid>
+      <Card.Body>This is a placeholder for the main app</Card.Body>
+    </Card>
+      </Container>
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
@@ -10,16 +12,16 @@ const Header = () => {
   };
   return (
     <header className="headerPH">
-      <div className="containerPH">
-        <div>
-          <Link className="TitleNAVPH">
-            <h1 className="titleHeadPh">GalaQuiz</h1>
-          </Link>
-          <p className="titleHeadPh">
-            Take your coding skills to the next LEVEL.
-          </p>
-        </div>
-        <div>
+      <Navbar bg="danger" variant="dark">
+        <Container>
+        <Image
+              alt="brianbot"
+              src="./images/logo3.jpg"
+              width="100"
+              height="80"
+              className="d-inline-block align-top"
+            />{" "}
+          <Navbar.Brand href="./Home">BrianBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
               <Link className="PH">
@@ -31,16 +33,15 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="PH" to="/login">
-                Login
-              </Link>
-              <Link className="PH" to="/signup">
-                Signup
-              </Link>
+              <Nav className="me-auto">
+            <Nav.Link href="./Login" to="./Login">Login</Nav.Link>
+            <Nav.Link href="./Signup" to="./Signup">Signup</Nav.Link>
+          </Nav>
             </>
           )}
-        </div>
-      </div>
+        </Container>
+      </Navbar>
+     
     </header>
   );
 };
