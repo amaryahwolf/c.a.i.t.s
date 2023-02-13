@@ -47,4 +47,4 @@ mutation removeExplanation($explanationId: ID!) {
     }
   }
 }
-``
+`;
