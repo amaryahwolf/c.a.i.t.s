@@ -1,11 +1,11 @@
 import React from "react";
 
-import { useMutation } from '@apollo/client';
-import { ADD_EXPLANATION } from '../utils/mutations';
+// import { useMutation } from '@apollo/client';
+// import { ADD_EXPLANATION } from '../utils/mutations';
 
-const Qparams = () => {
+const Explanations = () => {
 
-  const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
+  // const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
 
   // TODO: add JS logic for form handling
 
@@ -16,4 +16,4 @@ const Qparams = () => {
   );
 };
 
-export default Qparams;
+export default Explanations;
