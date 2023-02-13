@@ -1,10 +1,10 @@
-
 import React from "react";
-
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { REMOVE_EXPLANATION } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 const Profile = () => {
 

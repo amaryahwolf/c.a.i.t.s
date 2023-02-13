@@ -78,12 +78,8 @@ const httpLink = createHttpLink({
                   element={<Profile />}
                 />
                 <Route 
-                  path="/profiles/:username" 
-                  element={<Profile />}
-                />
-                <Route 
-                  path="/components/:query.id" 
-                  element={<Qparams />}
+              path='*' 
+              element={<h1 className="display-2">Wrong page!</h1>}
                 />
               </Routes>
             </div>
