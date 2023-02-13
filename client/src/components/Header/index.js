@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
@@ -14,6 +14,13 @@ const Header = () => {
     <header className="headerPH">
       <Navbar bg="danger" variant="dark">
         <Container>
+        <Image
+              alt="brianbot"
+              src="./images/logo3.jpg"
+              width="100"
+              height="80"
+              className="d-inline-block align-top"
+            />{" "}
           <Navbar.Brand href="./Home">BrianBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>

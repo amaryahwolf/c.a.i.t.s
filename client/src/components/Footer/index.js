@@ -1,25 +1,23 @@
 import React from "react";
-import{Container, Navbar} from 'react-bootstrap';
+import { Container, Navbar, Image } from "react-bootstrap";
 
 const Footer = () => {
   return (
     <>
-   
-  <Navbar bg="dark" variant="dark">
-    <Container>
-      <Navbar.Brand href="#home">
-        <img
-          alt=""
-          src="/brianbotlogo.png"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />{' '}
-        
-      </Navbar.Brand>
-    </Container>
-  </Navbar>
-  </>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">
+            <Image
+              alt="brianbot"
+              src="./images/logo3.jpg"
+              width="150"
+              height="100"
+              className="d-inline-block align-top"
+            />{" "}
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 
