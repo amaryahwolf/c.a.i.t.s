@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Qparams from './components/Qparams';
+import back1 from "./images/back1.jpg";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -42,8 +43,17 @@ const httpLink = createHttpLink({
   
   function App() {
     return (
+      <div
+      class="bg_image"
+      style={{
+        backgroundImage: 'url('+back1+')',
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
       <ApolloProvider client={client}>
-        
+     
+
         <Router>
           <div className="flex-column justify-flex-start min-100-vh">
             <Header />
@@ -79,6 +89,7 @@ const httpLink = createHttpLink({
           </div>
         </Router>
       </ApolloProvider>
+      </div>
     );
   }
   
