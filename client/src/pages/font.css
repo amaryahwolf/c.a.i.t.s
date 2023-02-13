@@ -1,0 +1,14 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap'); */
+
+@font-face {
+    font-family: "Emulogic";
+    src: local("Emulogic"),
+     url("./fonts/Emulogic-zrEw.ttf") format("truetype");
+    font-weight: bold;
+    }
+    
+
+.font {
+    font-family: "Emulogic";
+
+}
