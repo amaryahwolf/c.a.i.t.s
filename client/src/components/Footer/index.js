@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <Navbar bg="" variant="light" fixed="bottom">
-        <Container>
+        <Container fixed>
           <Navbar.Brand href="#home">
             <Image
               alt="brianbot"

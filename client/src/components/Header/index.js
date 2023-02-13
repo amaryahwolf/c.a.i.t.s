@@ -11,11 +11,11 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="headerPH">
-      <Navbar bg="" variant="dark">
+    <header className="Navbar">
+      <Navbar bg="purple" variant="dark">
         <Container>
         <Image 
-              alt="brianbot"
+              alt="bryanbot"
               src="./images/logo4.jpg"
               width="100"
               height="80"
@@ -25,7 +25,7 @@ const Header = () => {
           {Auth.loggedIn() ? (
             <>
               <Link className="PH">
-                {Auth.getProfile().data.username}'s profile
+                {Auth.getProfile().data.username}
               </Link>
               <button className="PH" onClick={logout}>
                 Logout
