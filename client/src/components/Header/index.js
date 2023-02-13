@@ -1,5 +1,7 @@
+import { assertValidSchema } from "graphql";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
@@ -10,15 +12,16 @@ const Header = () => {
   };
   return (
     <header className="headerPH">
-      <div className="containerPH">
-        <div>
-          <Link className="TitleNAVPH">
-            <h1 className="titleHeadPh">GalaQuiz</h1>
-          </Link>
-          <p className="titleHeadPh">
-            Take your coding skills to the next LEVEL.
-          </p>
-        </div>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">BrianBot</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#Login">Login</Nav.Link>
+            <Nav.Link href="#Signup">Signup</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+
         <div>
           {Auth.loggedIn() ? (
             <>
@@ -40,7 +43,7 @@ const Header = () => {
             </>
           )}
         </div>
-      </div>
+     
     </header>
   );
 };
