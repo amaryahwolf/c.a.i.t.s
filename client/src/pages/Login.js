@@ -28,7 +28,7 @@ const styles = {
   },
 
   submit: {
-    opacity: '1',
+    opacity: '3',
     backgroundColor: 'deeppink',
     borderColor: 'pink',
     borderWidth: '1px',
