@@ -28,18 +28,19 @@ const styles = {
   },
 
   submit: {
-    opacity: "3",
-    backgroundColor: "deeppink",
-    borderColor: "pink",
-    borderWidth: "1px",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: "40px",
-    display: "block",
-    paddingLeft: "50px",
-    paddingRight: "50px",
-    fontSize: "20px",
+    opacity: '3',
+    backgroundColor: 'deeppink',
+    borderColor: 'pink',
+    borderWidth: '1px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '40px',
+    display: 'block',
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    fontSize: '20px',
     // fontFamily: "'Rubik Microbe', cursive",
+
   },
 
   // font: {
@@ -162,17 +163,18 @@ console.log("rendered component")
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
+      
 
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-          style={styles.submit}
-          className="font"
-        >
-          Submit
-        </Button>
+      <Button
+        disabled={!(userFormData.email && userFormData.password)}
+        type='submit'
+        variant='success'
+        style={styles.submit}
+        className='font'>
+        Submit
+      </Button>
       </Form>
+
     </>
   );
 };

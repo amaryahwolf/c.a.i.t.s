@@ -17,7 +17,6 @@ import Footer from './components/Footer';
 import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
 
-
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
     uri: '/graphql',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Image } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -29,7 +29,7 @@ const styles = {
   },
 
   submit: {
-    opacity: '1',
+    opacity: '3',
     backgroundColor: 'deeppink',
     borderColor: 'pink',
     borderWidth: '1px',
@@ -43,6 +43,22 @@ const styles = {
     // fontFamily: "'Rubik Microbe', cursive",
 
   },
+
+  heading: {
+    color: 'white',
+    fontSize: '20px',
+    marginBottom: '-60px',
+    marginTop: '40px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    textAlign: 'center',
+  },
+
+  pigeon: {
+    marginRight: '0',
+    marginLeft: 'auto',
+    display: 'block',
+  }
 }
 
 
@@ -104,6 +120,7 @@ const Signup = () => {
 
   return (
     <>
+    <h1 style={styles.heading}> Got questions? We have answers! </h1>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit} style={styles.body}>
         {/* show alert if server response is bad */}
@@ -149,7 +166,7 @@ const Signup = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-        </Form>
+       
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
@@ -157,7 +174,20 @@ const Signup = () => {
           style={styles.submit}>
           Submit
         </Button>
-      
+        </Form>
+
+        <Image 
+              alt="pigeon"
+              src="./images/pigeon.gif"
+              style={styles.pigeon} 
+              width="100"
+              height="70"
+              className="float-right"
+
+            />
+            {" "}
+
+
     </>
   );
 };
