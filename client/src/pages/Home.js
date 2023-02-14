@@ -17,13 +17,13 @@ const styles = {
     textAlign: "center",
     opacity: "0.4",
     marginTop: "100px",
-    padding: "50px",
+    padding: "150px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "50%",
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
-    display: "block",
+    flexWrap: "wrap",
     // justifyContent: 'center',
   },
   explanation: {
@@ -34,17 +34,17 @@ const styles = {
     textAlign: "center",
     opacity: "0.4",
     marginTop: "100px",
-    padding: "50px",
+    padding: "150px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "50%",
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
-    display: "block",
+    flexWrap: "wrap",
+    
     //justifyContent: 'center',
   },
   containerStyle: {
-    opacity: "0.8",
     background: "transparent",
     display: "flex",
     marginLeft: "auto",
@@ -96,11 +96,12 @@ const Home = () => {
         <Container fluid>
         <Form onSubmit={handleFormSubmit}>
           <Form.Control
+            as="textarea"
             name="userQuestion"
             value={userQuestion}
             onChange={(e) => setUserQuestion(e.target.value)}
             type="text"
-            placeholder="question box"
+            placeholder="Enter your code snippet here!"
             style={styles.question}
               />
           <Button type="submit" variant="success" size="lg">
@@ -109,11 +110,11 @@ const Home = () => {
         </Form>
         </Container>
         <Container fluid>
-          <input
+          <input          
             name="aiResponse"
             value={aiResponse}
-            
-            placeholder="explanation box"
+            placeholder="View BryanBot's explanation here!"
+            as="textarea"
             style={styles.explanation}></input>
         </Container>
       </Container>
