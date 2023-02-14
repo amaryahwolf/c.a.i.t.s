@@ -129,7 +129,7 @@ const Login = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-      </Form>
+      
 
       <Button
         disabled={!(userFormData.email && userFormData.password)}
@@ -139,6 +139,7 @@ const Login = () => {
         className='font'>
         Submit
       </Button>
+      </Form>
     </>
   );
 };

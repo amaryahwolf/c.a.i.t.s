@@ -24,8 +24,9 @@ const Header = () => {
           <Navbar.Brand href="./">BryanBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
-              <Link className="PH">
+              <Link className="PH" to="./me">
                 {Auth.getProfile().data.username}
+                
               </Link>
               <button className="PH" onClick={logout}>
                 Logout

@@ -42,6 +42,7 @@ const resolvers = {
         // TODO: connect route to Explanation model and grab user input(question) as prompt
         addExplanation: async (parent, { question }, context) => {
           console.log("We are adding explanations!")
+          // console.log(context)
           const response = await openAi.createCompletion({
           model: "code-davinci-002",
           prompt: question,
@@ -52,16 +53,21 @@ const resolvers = {
           presence_penalty: 0.0,
           stop: ["\"\"\""],
           });
+          console.log(response)
           const explanationData = await Explanation.create({
             question,
             response: response.data.choices[0].text
           })
-          await User.findOneAndUpdate(
+          console.log(explanationData)
+
+          const userData = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { explanations: explanationData._id } }
           );
-          console.log(response.data.choices[0].text)
-          return {question, response: response.data.choices[0].text}
+          // console.log(response.data.choices[0].text)
+          console.log(userData)
+          // return {question, response: response.data.choices[0].text}
+          return explanationData
         },
 
         // Delete a user's associated explanation
