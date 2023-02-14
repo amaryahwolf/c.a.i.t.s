@@ -101,7 +101,7 @@ const Home = () => {
             value={userQuestion}
             onChange={(e) => setUserQuestion(e.target.value)}
             type="text"
-            placeholder="question box"
+            placeholder="Enter your code snippet here!"
             style={styles.question}
               />
           <Button type="submit" variant="success" size="lg">
@@ -110,11 +110,11 @@ const Home = () => {
         </Form>
         </Container>
         <Container fluid>
-          <input
+          <input          
             name="aiResponse"
             value={aiResponse}
+            placeholder="View BryanBot's explanation here!"
             as="textarea"
-            placeholder="explanation box"
             style={styles.explanation}></input>
         </Container>
       </Container>
