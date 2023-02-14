@@ -2,7 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 // Import OpenAI node package, creating connection to API, and exporting to the rest of the application.
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 const openAi = new OpenAIApi(configuration);
 

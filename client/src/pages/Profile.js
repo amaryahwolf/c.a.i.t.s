@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  Jumbotron,
+  Container,
+  CardColumns,
+  Card,
+  Button,
+} from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -36,9 +43,40 @@ const Profile = () => {
   }
 
   return (
-    <div className="PH">
-        Profile
-    </div>
+    <>
+    <Jumbotron fluid className="text-light bg-dark">
+        <Container>
+          <h1>Viewing {userData.username}'s explanations!</h1>
+        </Container>
+      </Jumbotron>
+      <Container>
+        <h2>
+          {userData.explanations?.length
+            ? `Viewing ${userData.explanations.length} saved ${
+                userData.explanations.length === 1 ? 'explanation' : 'explanations'
+              }:`
+            : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
+        </h2>
+        <CardColumns>
+          {userData.explanations?.map((explanation) => {
+            return (
+              <Card key={explanation.explanationId} border="dark">
+                <Card.Body>
+                  <Card.Text>{explanation.question}</Card.Text>
+                  <Card.Text>{explanation.response}</Card.Text>
+                  <Button
+                    className="btn-block btn-danger"
+                    onClick={() => handleDeleteExplanation(explanation.explanationId)}
+                  >
+                    Delete this Explanation!
+                  </Button>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
+    </>
   );
 };
 
