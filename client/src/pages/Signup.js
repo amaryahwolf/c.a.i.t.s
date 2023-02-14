@@ -58,7 +58,47 @@ const styles = {
     marginRight: '0',
     marginLeft: 'auto',
     display: 'block',
+        bottom: '0px'
+  },
+
+  stars1: {
+    marginRight: 'auto',
+    marginLeft: '130px',
+    marginTop: '130px',
+    display: 'inline-block',
+    position: 'absolute',
+  },
+  
+  stars2: {
+    marginRight: '0',
+    marginLeft: '1100px',
+    marginTop: '200px',
+    display: 'block',
+    position: "absolute"
+  },
+
+  vanessa: {
+
+    marginRight: 'auto',
+    marginLeft: '90px',
+    display: 'inline-block',
+    position: 'fixed',
+    bottom: '10px'
+
+  },
+
+ hello: {
+
+    marginRight: 'auto',
+    marginLeft: '130px',
+    display: 'inline-block',
+    position: 'fixed',
+    bottom: '110px'
+
   }
+
+
+
 }
 
 
@@ -116,12 +156,28 @@ const Signup = () => {
     });
   };
 
-  
+
 
   return (
     <>
-    <h1 style={styles.heading}> Got questions? We have answers! </h1>
+      <h1 style={styles.heading}> Got questions? We have answers! </h1>
       {/* This is needed for the validation functionality above */}
+
+      <Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars1}
+        height="80"
+      />
+
+<Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars2}
+        height="50"
+      />
+
+
       <Form noValidate validated={validated} onSubmit={handleFormSubmit} style={styles.body}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
@@ -129,7 +185,7 @@ const Signup = () => {
         </Alert>
 
         <Form.Group style={styles.between}>
-          <Form.Label htmlFor='username' style={{fontSize: '25px'}}>Username</Form.Label>
+          <Form.Label htmlFor='username' style={{ fontSize: '25px' }}>Username</Form.Label>
           <Form.Control
             type='text'
             placeholder='Your username'
@@ -142,7 +198,7 @@ const Signup = () => {
         </Form.Group>
 
         <Form.Group style={styles.between}>
-          <Form.Label htmlFor='email' style={{fontSize: '25px'}}>Email</Form.Label>
+          <Form.Label htmlFor='email' style={{ fontSize: '25px' }}>Email</Form.Label>
           <Form.Control
             type='email'
             placeholder='Your email address'
@@ -155,7 +211,7 @@ const Signup = () => {
         </Form.Group>
 
         <Form.Group style={styles.between}>
-          <Form.Label htmlFor='password' style={{fontSize: '25px'}}>Password</Form.Label>
+          <Form.Label htmlFor='password' style={{ fontSize: '25px' }}>Password</Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'
@@ -166,7 +222,7 @@ const Signup = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-       
+
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
@@ -174,18 +230,33 @@ const Signup = () => {
           style={styles.submit}>
           Submit
         </Button>
-        </Form>
+      </Form>
 
-        <Image 
-              alt="pigeon"
-              src="./images/pigeon.gif"
-              style={styles.pigeon} 
-              width="100"
-              height="70"
-              className="float-right"
+      <Image
+        alt="pigeon"
+        src="./images/pigeon.gif"
+        style={styles.pigeon}
+        width="100"
+        height="70"
+        className="float-right"
+      />
 
-            />
-            {" "}
+<Image
+        alt="hello"
+        src="./images/hellothere.png"
+        style={styles.hello}
+        width="150"
+        height="50"
+      />
+
+<Image
+        alt="vanessa"
+        src="./images/vanessa.png"
+        style={styles.vanessa}
+        width="200"
+        height="120"
+      />
+
 
 
     </>

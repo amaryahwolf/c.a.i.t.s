@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Image } from "react-bootstrap";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -43,9 +43,24 @@ const styles = {
 
   },
 
-  // font: {
-  // fontFamily: "'Rubik Microbe', cursive",
-  // },
+  stars2: {
+    marginRight: 'auto',
+    marginLeft: '130px',
+    marginTop: '130px',
+    display: 'inline-block',
+    position: 'absolute',
+  },
+
+  stars1: {
+    marginRight: '0',
+    marginLeft: '1100px',
+    marginTop: '200px',
+    display: 'block',
+    position: "absolute"
+  },
+
+
+
 };
 // check if form has everything (as per react-bootstrap docs)
 
@@ -54,7 +69,7 @@ const Login = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [emailError, setEmailError] = useState("");
-console.log("rendered component")
+  console.log("rendered component")
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
@@ -114,8 +129,25 @@ console.log("rendered component")
 
   return (
     <>
+
+<Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars1}
+        height="80"
+      />
+
+<Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars2}
+        height="50"
+      />
+
+    
+
       <Form
-  onSubmit={handleFormSubmit}
+        onSubmit={handleFormSubmit}
         style={styles.body}
       >
         <Alert
@@ -163,16 +195,16 @@ console.log("rendered component")
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
-      
 
-      <Button
-        disabled={!(userFormData.email && userFormData.password)}
-        type='submit'
-        variant='success'
-        style={styles.submit}
-        className='font'>
-        Submit
-      </Button>
+
+        <Button
+          disabled={!(userFormData.email && userFormData.password)}
+          type='submit'
+          variant='success'
+          style={styles.submit}
+          className='font'>
+          Submit
+        </Button>
       </Form>
 
     </>
