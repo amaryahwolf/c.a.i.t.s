@@ -136,7 +136,7 @@ const Home = () => {
         {/* TODO: replace with spinning BryanBot icon */}
         <div>
           <div style={styles.spinnerContainer}>
-            {/* {isLoading && (
+            {isLoading && (
               <motion.div initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} style={styles.motion}>
                 <div className="spinner-border text-primary" role="status">
                   <span className="visually-hidden">Loading...</span>
@@ -151,7 +151,7 @@ const Home = () => {
               style={styles.explanation}
               as="textarea">
 
-            </Container> */}
+            </Container>
           </div>
         </div>
       </Container>
