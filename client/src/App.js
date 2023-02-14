@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Qparams from './components/Explanations';
+import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
 
 
@@ -45,7 +45,7 @@ const httpLink = createHttpLink({
   function App() {
     return (
       <div
-      class="bg_image"
+      className="bg_image"
       style={{
         backgroundImage: 'url('+back1+')',
         backgroundSize: "cover",
