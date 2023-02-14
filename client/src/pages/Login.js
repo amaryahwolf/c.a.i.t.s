@@ -40,7 +40,7 @@ const styles = {
     paddingLeft: '50px',
     paddingRight: '50px',
     fontSize: '20px',
-    // fontFamily: "'Rubik Microbe', cursive",
+    // fontFamily: ''Rubik Microbe', cursive',
 
   },
 
@@ -129,7 +129,6 @@ const Login = () => {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-      
 
       <Button
         disabled={!(userFormData.email && userFormData.password)}
@@ -140,6 +139,7 @@ const Login = () => {
         Submit
       </Button>
       </Form>
+
     </>
   );
 };
