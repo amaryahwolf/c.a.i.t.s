@@ -39,7 +39,7 @@ const styles = {
     display: 'block',
     paddingLeft: '50px',
     paddingRight: '50px',
-    fontSize: '25px',
+    fontSize: '20px',
     // fontFamily: "'Rubik Microbe', cursive",
 
   },
