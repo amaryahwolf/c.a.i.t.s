@@ -13,9 +13,6 @@ const typeDefs = gql`
     question: String
     response: String
   }
-  input ExplanationInput {
-    question: String
-  }
 
   type Auth {
     token: ID!
@@ -30,9 +27,11 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     # Add mutation for AI generated response
-    addExplanation(question: String): Explanation
-    removeExplanation(explanationId: ID!): User
+    addExplanation(question: String!): Explanation
+    removeExplanation(_id: ID!): User
   }
 `;
 
 module.exports = typeDefs;
+
+// "!" = requirement to store in db

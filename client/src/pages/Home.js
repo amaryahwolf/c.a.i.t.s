@@ -52,12 +52,23 @@ const styles = {
   },
 };
 
-// TODO: add logic to connect question and exlanation boxes to addExplanation function
+// TODO: add logic to connect question and explanation boxes to addExplanation function
+// handle form submit, form ,button, state for question. and then handle submit. 
+
+
 // TODO: add functionality so user can save question/response if logged in (Auth)
 
 const Home = () => {
 
   const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
+  const handleFormSubmit (event) => {
+    event.preventDefault() 
+    try {
+      const {data} = await addExplanation ({variables: {}})
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <>

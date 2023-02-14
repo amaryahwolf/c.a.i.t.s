@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EXPLANATION = gql`
-mutation addExplanation($question: String) {
+mutation addExplanation($question: String!) {
     addExplanation(question: $question) {
       _id
       question
@@ -35,8 +35,8 @@ mutation addExplanation($question: String) {
   `;
 
 export const REMOVE_EXPLANATION = gql`
-mutation removeExplanation($explanationId: ID!) {
-  removeExplanation(explanationId: $explanationId) {
+mutation removeExplanation($id: ID!) {
+  removeExplanation(_id: $id) {
     _id
     username
     email
