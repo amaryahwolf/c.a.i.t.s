@@ -67,12 +67,12 @@ const resolvers = {
         // Delete a user's associated explanation
         removeExplanation: async (parent, { _id }, context) => {
           if (context.user) {
-            const udpatedUser = await User.findOneAndUpdate(
+            const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },
               { $pull: { explanations: { _id } } },
               { new: true }
             );
-            return udpatedUser;
+            return updatedUser;
           }
           throw new AuthenticationError('You need to be logged in!');
         }

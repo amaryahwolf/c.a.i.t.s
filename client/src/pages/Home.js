@@ -1,7 +1,7 @@
 //importing react and the {useQuery}
 import { printIntrospectionSchema } from "graphql";
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
 
 import { useMutation } from '@apollo/client';
 import { ADD_EXPLANATION } from '../utils/mutations';
@@ -53,31 +53,85 @@ const styles = {
 };
 
 // TODO: add logic to connect question and explanation boxes to addExplanation function
-// handle form submit, form ,button, state for question. and then handle submit. 
-
-
 // TODO: add functionality so user can save question/response if logged in (Auth)
 
 const Home = () => {
 
+  // Create state for holding returned AI response
+  const [searchedExplanation, setSearchedExplanation] = useState('');
+
+  // Create state for user question
+  const [userQuestion, setUserQuestion] = useState('');
+
+  // Create state for ai response - not sure if necessary
+  const [aiResponse, setAiResponse] = useState('');
+
+  // Create addExplanation variable to use mutation
   const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
-  const handleFormSubmit (event) => {
-    event.preventDefault() 
-    try {
-      const {data} = await addExplanation ({variables: {}})
-    } catch (error) {
-      
+
+  // Method to send user question to AI and return response
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); 
+    
+    if (!userQuestion) {
+      return false;
     }
-  }
+    
+    try {
+      const { data } = await addExplanation({
+        variables: {
+          question: userQuestion,
+          response: aiResponse
+      },
+    });
+
+    setSearchedExplanation(data)
+    setAiResponse(data.response)
+    } catch (error) {
+      console.error(err);
+    }
+  };
+
+  // Function to handle saving explanation to database
+  const handleSaveExplanation = async (explanationId) => {
+    // find the explanation in `searchedExplanation` state by the matching id
+    const explanationToSave = searchedExplanation.find((explanation) => explanation.explanationId === explanationId);
+
+    // Get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const { data } = await addExplanation({
+        variables: { explanationData: { ...explanationToSave } },
+      });
+    
+      // addExplanation([...searchedExplanation, explanationToSave.bookId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
       <Container style={styles.containerStyle}>
         <Container fluid>
-          <input
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Control
+            name="userQuestion"
+            value={userQuestion}
+            onChange={(e) => setUserQuestion(e.target.value)}
             type="text"
             placeholder="question box"
-            style={styles.question}></input>
+            style={styles.question}
+              />
+          <Button type="submit" variant="success" size="lg">
+                  Submit Question
+          </Button>    
+        </Form>
         </Container>
         <Container fluid>
           <input
