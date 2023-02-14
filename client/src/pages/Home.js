@@ -2,6 +2,7 @@
 import { printIntrospectionSchema } from "graphql";
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { motion } from 'framer-motion'
 
 import { useMutation } from '@apollo/client';
 import { ADD_EXPLANATION } from '../utils/mutations';
@@ -24,7 +25,6 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
-    // justifyContent: 'center',
   },
   explanation: {
     color: "white",
@@ -41,8 +41,6 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
-    
-    //justifyContent: 'center',
   },
   containerStyle: {
     background: "transparent",
@@ -50,12 +48,37 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
   },
+  submit: {
+    opacity: '1',
+    backgroundColor: 'deeppink',
+    borderColor: 'pink',
+    borderWidth: '1px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '10px',
+    display: 'block',
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    fontSize: '20px',
+  },
+  spinnerContainer: {
+    position: "relative"
+  },
+  motion: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 };
 
 const Home = () => {
 
   // Create state for user question
   const [userQuestion, setUserQuestion] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Create state for ai response - not sure if necessary
   const [aiResponse, setAiResponse] = useState('');
@@ -66,25 +89,26 @@ const Home = () => {
   // Console log aiResponse so we can see its value
   useEffect(() => {
     console.log(aiResponse)
-  },[aiResponse])
+  }, [aiResponse])
 
   // Method to send user question to AI and return response
   const handleFormSubmit = async (event) => {
-    event.preventDefault(); 
-    
+    event.preventDefault();
+    setIsLoading(true)
     if (!userQuestion) {
       return false;
     }
-    
+
     try {
       const { data } = await addExplanation({
         variables: {
           question: userQuestion,
           response: aiResponse
-      },
-    });
-    console.log(data)
-    setAiResponse(data.addExplanation.response)
+        },
+      });
+      console.log(data)
+      setAiResponse(data.addExplanation.response)
+      setIsLoading(false)
     } catch (error) {
       console.error(error);
     }
@@ -94,29 +118,42 @@ const Home = () => {
     <>
       <Container style={styles.containerStyle}>
         <Container fluid>
-        <Form onSubmit={handleFormSubmit}>
-          <Form.Control
-            as="textarea"
-            name="userQuestion"
-            value={userQuestion}
-            onChange={(e) => setUserQuestion(e.target.value)}
-            type="text"
-            placeholder="Enter your code snippet here!"
-            style={styles.question}
-              />
-          <Button type="submit" variant="success" size="lg">
-                  Submit Question
-          </Button>    
-        </Form>
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Control
+              as="textarea"
+              name="userQuestion"
+              value={userQuestion}
+              onChange={(e) => setUserQuestion(e.target.value)}
+              type="text"
+              placeholder="Enter your code snippet here!"
+              style={styles.question}
+            />
+            <Button type="submit" variant="success" style={styles.submit}>
+              Submit Question
+            </Button>
+          </Form>
         </Container>
-        <Container fluid>
-          <input          
-            name="aiResponse"
-            value={aiResponse}
-            placeholder="View BryanBot's explanation here!"
-            as="textarea"
-            style={styles.explanation}></input>
-        </Container>
+        {/* TODO: replace with spinning BryanBot icon */}
+        <div>
+          <div style={styles.spinnerContainer}>
+            {/* {isLoading && (
+              <motion.div initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} style={styles.motion}>
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              </motion.div>
+            )}
+            <Container
+              fluid
+              name="aiResponse"
+              value={aiResponse}
+              placeholder="View BryanBot's explanation here!"
+              style={styles.explanation}
+              as="textarea">
+
+            </Container> */}
+          </div>
+        </div>
       </Container>
     </>
   );
