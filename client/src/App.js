@@ -18,7 +18,6 @@ import Footer from './components/Footer';
 import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
 
-
 const styles = {
   font: {
     fontFamily: "'VT323', monospace"
