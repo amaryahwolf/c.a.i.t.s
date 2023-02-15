@@ -16,6 +16,7 @@ import Auth from '../utils/auth';
 const styles = {
   jumbo:{
     color: "white",
+    opacity: '0.8',
     viewHeight: "100%",
     textAlign: "center",
     marginTop: "50px",
@@ -45,9 +46,16 @@ const styles = {
   },
   body: {
     // background: "linear-gradient(#8E2DE2, #4A00E0)", 
-    backgroundColor: "white",
-    backgroundOpacity: 0.4,
-    display: "flex"
+    // background: 'rgba (0, 0, 0, 0.1) !important',
+    backgroundColor: 'white',
+    opacity: '0.8',
+    display: 'flex',
+    borderRadius: '5px',
+    flexDirection: 'column'
+
+
+
+
   },
   question: {
     color: "white",
@@ -56,7 +64,7 @@ const styles = {
     textAlign: "center",
     margin: "10px",
     padding: "10px",
-    opacity: "0.8",
+    // opacity: "0.8",
     borderRadius: "20px",
     width: "100%",
     flexWrap: "wrap",
@@ -71,7 +79,7 @@ const styles = {
     textAlign: "center",
     marginTop: "10px",
     padding: "10px",
-    opacity: "0.8",
+    // opacity: "0.8",
     borderRadius: "20px",
     width: "100%",
     flexWrap: "wrap",
@@ -129,11 +137,11 @@ const Profile = () => {
               }...`
             : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
         </h2>
-        <CardColumns>
+        <CardColumns style={{overflow:"auto", height:"450px"}}>
           {userData.explanations?.map((explanation) => {
             return (
-              <Card key={explanation.explanationId} border="dark">
-                <Card.Body style={styles.body} className="">
+              <Card key={explanation.explanationId} border="dark" style={styles.body} >
+                <Card.Body className="">
                   <Card.Text style={styles.question}>Code Block: {explanation.question}</Card.Text>
                   <Card.Text style={styles.response}>Explanation: {explanation.response}</Card.Text>
                   <Button
