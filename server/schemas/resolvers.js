@@ -39,13 +39,12 @@ const resolvers = {
         },
 
         // Create new explanation with AI
-        // TODO: connect route to Explanation model and grab user input(question) as prompt
         addExplanation: async (parent, { question }, context) => {
           console.log("We are adding explanations!")
           // console.log(context)
           const response = await openAi.createCompletion({
           model: "code-davinci-002",
-          prompt: question,
+          prompt: `####Explain this code in plain English\n \n"""Code \n${question} \n"""Explanation`,
           temperature: 0,
           max_tokens: 64,
           top_p: 1.0,
@@ -53,6 +52,9 @@ const resolvers = {
           presence_penalty: 0.0,
           stop: ["\"\"\""],
           });
+          // const headers = {
+          //   'Authorization': `Bearer ${process.env.OPENAI_SECRET_KEY}`
+          // }
           console.log(response)
           const explanationData = await Explanation.create({
             question,
@@ -60,12 +62,15 @@ const resolvers = {
           })
           console.log(explanationData)
 
+          // TODO: add conditional logic to only update user if user is logged in, else return
+          // if (userData) {
           const userData = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { explanations: explanationData._id } }
           );
           // console.log(response.data.choices[0].text)
           console.log(userData)
+          // }
           // return {question, response: response.data.choices[0].text}
           return explanationData
         },

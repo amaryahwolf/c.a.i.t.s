@@ -40,7 +40,7 @@ const Profile = () => {
   const userData = data?.me || {};
 
   // Function to handle explanation delete
-  const handleDeleteExplanation = async (explanationId) => {
+  const handleDeleteExplanation = async (_id) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -49,7 +49,7 @@ const Profile = () => {
 
     try {
       const { data } = await removeExplanation({
-        variables: { explanationId },
+        variables: { _id },
       });
    
     } catch (err) {
@@ -79,13 +79,13 @@ const Profile = () => {
         <CardColumns>
           {userData.explanations?.map((explanation) => {
             return (
-              <Card key={explanation.explanationId} style={styles.CardQ}>
+              <Card key={explanation._id} border="dark">
                 <Card.Body>
                   <Card.Text style={styles.CardQ}>{explanation.question}</Card.Text>
                   <Card.Text>{explanation.response}</Card.Text>
                   <Button
                     className="btn-block btn-danger"
-                    onClick={() => handleDeleteExplanation(explanation.explanationId)}
+                    onClick={() => handleDeleteExplanation(explanation._id)}
                   >
                     Delete this Explanation!
                   </Button>

@@ -1,8 +1,9 @@
 const { Configuration, OpenAIApi } = require("openai");
+require('dotenv').config()
 
 // Import OpenAI node package, creating connection to API, and exporting to the rest of the application.
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 const openAi = new OpenAIApi(configuration);
 
