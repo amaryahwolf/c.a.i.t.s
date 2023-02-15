@@ -47,7 +47,7 @@ const styles = {
 
   heading: {
     color: 'white',
-    fontSize: '20px',
+    fontSize: '3px',
     marginBottom: '-60px',
     marginTop: '40px',
     marginLeft: 'auto',
@@ -81,7 +81,7 @@ const styles = {
   vanessa: {
 
     marginRight: 'auto',
-    marginLeft: '90px',
+    marginLeft: '5px',
     display: 'inline-block',
     position: 'fixed',
     bottom: '10px'
@@ -91,7 +91,7 @@ const styles = {
  hello: {
 
     marginRight: 'auto',
-    marginLeft: '130px',
+    marginLeft: '50px',
     display: 'inline-block',
     position: 'fixed',
     bottom: '110px'

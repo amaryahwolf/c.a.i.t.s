@@ -1,5 +1,16 @@
 import React from "react";
-import { Container, Navbar, Image } from "react-bootstrap";
+import { Nav, Container, Navbar, Image } from "react-bootstrap";
+
+const styles = {
+
+  contact: {
+    marginLeft: '100px',
+    fontSize: '20px',
+    bottom: 'auto'
+
+
+  }
+}
 
 const Footer = () => {
   return (
@@ -7,14 +18,11 @@ const Footer = () => {
       <Navbar bg="" variant="light" fixed="bottom">
         <Container fixed>
           <Navbar.Brand href="#home">
-            <Image
-              alt="brianbot"
-              src="./images/logo4.jpg"
-              width="150"
-              height="100"
-              className="d-inline-block align-top"
-
-            />{" "}
+          <Nav className="me-auto">
+                <Nav.Link href="./Login" to="./Login"
+                  style={styles.contact}
+                >Contact Us</Nav.Link>
+                </Nav>
           </Navbar.Brand>
         </Container>
       </Navbar>
