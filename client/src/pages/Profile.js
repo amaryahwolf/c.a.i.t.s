@@ -14,81 +14,72 @@ import { REMOVE_EXPLANATION } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const styles = {
-  cardMain:{
-    background: "linear-gradient(#8E2DE2, #4A00E0)",
-    
-  },
-  CardQ: {
-    color: "white",
-    viewHeight: "100%",
-    background: "linear-gradient(#800080, #ffc0cb)",
-    fontFamily: "Arial",
-    textAlign: "center",
-    opacity: "0.8",
-    marginTop: "10px",
-    padding: "10px",
-    opacity: "0.8",
-    borderRadius: "20px",
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    flexWrap: "wrap",
-    fontSize: '30px',
-    fontFamily: "'VT323', monospace",
-  },
   jumbo:{
     color: "white",
     viewHeight: "100%",
-    background: "linear-gradient(#FC466B, #3F5EFB)",
-    fontFamily: "Arial",
     textAlign: "center",
-    opacity: "0.7",
     marginTop: "50px",
     padding: "10px",
-    opacity: "0.8",
-    borderRadius: "20px",
-    width: "50%",
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
     fontSize: '40px',
     fontFamily: "'VT323', monospace",
   },
-  cardR:{
+  header:{
     color: "white",
     viewHeight: "100%",
-    background: "linear-gradient(#1a2a6c, #b21f1f,#fdbb2d)",
-    fontFamily: "Arial",
+    background: "linear-gradient(#8E2DE2, #4A00E0)",
     textAlign: "center",
-    opacity: "0.7",
     marginTop: "5px",
     padding: "5px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "50%",
     marginLeft: "auto",
     marginRight: "auto",
+    flexWrap: "wrap",
+    fontSize: '30px',
+    fontFamily: "'VT323', monospace",
+  },
+  body: {
+    // background: "linear-gradient(#8E2DE2, #4A00E0)", 
+    backgroundColor: "white",
+    backgroundOpacity: 0.4,
+    display: "flex"
+  },
+  question: {
+    color: "white",
+    viewHeight: "100%",
+    background: "linear-gradient(#8E2DE2, #4A00E0)",
+    textAlign: "center",
+    margin: "10px",
+    padding: "10px",
+    opacity: "0.8",
+    borderRadius: "20px",
+    width: "100%",
     flexWrap: "wrap",
     fontSize: '20px',
     fontFamily: "'VT323', monospace",
   },
-  SavedE:{
+  
+  response:{
     color: "white",
     viewHeight: "100%",
-    background: "linear-gradient(#8E2DE2, #4A00E0)",
-    fontFamily: "Arial",
+    background: "linear-gradient(#b92b27, #1565C0)",
     textAlign: "center",
-    opacity: "0.7",
-    marginTop: "5px",
-    padding: "5px",
+    marginTop: "10px",
+    padding: "10px",
     opacity: "0.8",
     borderRadius: "20px",
     width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
     flexWrap: "wrap",
     fontSize: '20px',
     fontFamily: "'VT323', monospace",
+  }, 
+  button: {
+    
   }
 };
 
@@ -127,26 +118,27 @@ const Profile = () => {
     <>
     <Jumbotron fluid style={styles.jumbo}>
         <Container>
-          <h1>Viewing {userData.username}'s explanations!</h1>
+          <h1>Viewing {userData.username}'s Explanations!</h1>
         </Container>
       </Jumbotron>
       <Container>
-        <h2 style={styles.SavedE}>
+        <h2 style={styles.header}>
           {userData.explanations?.length
-            ? `Viewing ${userData.explanations.length} saved ${
+            ? `You have ${userData.explanations.length} saved ${
                 userData.explanations.length === 1 ? 'explanation' : 'explanations'
-              }:`
+              }...`
             : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
         </h2>
         <CardColumns>
           {userData.explanations?.map((explanation) => {
             return (
               <Card key={explanation.explanationId} border="dark">
-                <Card.Body style={styles.cardMain}>
-                  <Card.Text style={styles.CardQ}>{explanation.question}</Card.Text>
-                  <Card.Text style={styles.cardR}>{explanation.response}</Card.Text>
+                <Card.Body style={styles.body} className="">
+                  <Card.Text style={styles.question}>Code Block: {explanation.question}</Card.Text>
+                  <Card.Text style={styles.response}>Explanation: {explanation.response}</Card.Text>
                   <Button
-                    className="btn-block btn-danger"
+                    style={styles.button}
+                    className="btn-danger"
                     onClick={() => handleDeleteExplanation(explanation.explanationId)}
                   >
                     Delete this Explanation!
