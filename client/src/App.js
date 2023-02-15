@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "./App.css"
 
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -16,7 +17,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
+import './pages/font.css';
 
+const styles = {
+  font: {
+    fontFamily: "'VT323', monospace"
+  }
+}
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,7 +57,10 @@ const httpLink = createHttpLink({
         backgroundImage: 'url('+back1+')',
         backgroundSize: "cover",
         height: "100vh",
-      }}
+        fontFamily: "'VT323', monospace",
+      }
+    }
+
     >
       <ApolloProvider client={client}>
      
