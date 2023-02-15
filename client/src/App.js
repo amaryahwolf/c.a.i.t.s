@@ -17,7 +17,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
-import './pages/font.css';
 
 const styles = {
   font: {
