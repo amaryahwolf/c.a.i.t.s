@@ -24,7 +24,7 @@ const styles = {
   },
 
   between: {
-    marginBottom: "40px",
+    marginBottom: "30px",
   },
 
   submit: {
@@ -35,6 +35,7 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '40px',
+    marginBottom: '-10px',
     display: 'block',
     paddingLeft: '50px',
     paddingRight: '50px',
