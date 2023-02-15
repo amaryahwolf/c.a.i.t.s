@@ -53,7 +53,8 @@ const Login = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [emailError, setEmailError] = useState("");
-console.log("rendered component")
+  const [passwordError, setPasswordError] = useState("");
+  console.log("rendered component");
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
@@ -96,27 +97,35 @@ console.log("rendered component")
     });
   };
 
+  // Logic to check email, with alerts
   const emailValidator = () => {
-    console.log(userFormData.email)
+    console.log(userFormData.email);
     if (!userFormData.email) {
-      console.log("no email")
+      console.log("no email");
       setEmailError("Email is required");
     } else if (!new RegExp(/\S+@\S+\.\S+/).test(userFormData.email)) {
-      console.log("wrong email")
+      console.log("wrong email");
       setEmailError("Incorrect email format");
-      console.log(emailError)
+      console.log(emailError);
     } else {
-      setEmailError("")
+      setEmailError("");
     }
-    console.log(emailError)
+    console.log(emailError);
+  };
+
+  const passwordValidator = () => {
+    if (!userFormData.password) {
+      setPasswordError("Password is required");
+    } else if (userFormData.password.length < 8) {
+      setPasswordError("Password must have a minimum 8 characters");
+    } else {
+      setPasswordError("");
+    }
   };
 
   return (
     <>
-      <Form
-  onSubmit={handleFormSubmit}
-        style={styles.body}
-      >
+      <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -139,11 +148,7 @@ console.log("rendered component")
             onBlur={emailValidator}
             required
           />
-          {emailError && (
-            <p>
-              {emailError}
-            </p>
-          )}
+          {emailError && <p>{emailError}</p>}
         </Form.Group>
 
         <Form.Group>
@@ -156,11 +161,10 @@ console.log("rendered component")
             name="password"
             onChange={handleInputChange}
             value={userFormData.password}
+            onBlur={passwordValidator}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
+          {passwordError && <p>{passwordError}</p>}
         </Form.Group>
 
         <Button
