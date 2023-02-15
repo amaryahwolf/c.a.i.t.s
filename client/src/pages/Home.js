@@ -1,5 +1,3 @@
-//importing react and the {useQuery}
-import { printIntrospectionSchema } from "graphql";
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import { motion } from 'framer-motion';
@@ -101,7 +99,7 @@ const Home = () => {
       const { data } = await addExplanation({
         variables: {
           question: userQuestion,
-          // response: aiResponse
+          response: aiResponse
         },
       });
       console.log(data)

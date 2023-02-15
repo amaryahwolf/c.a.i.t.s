@@ -1,24 +1,26 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Image } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
 const styles = {
-
-
-  button: {
-        fontSize: '30px',
-        marginLeft: 'auto',
-        marginRight: '40px',
-        alignItems: 'flex-end',
-        // paddingRight: '20px',
-        
-  }
-
-}
-
+  buttonsLO: {
+    fontSize: '30px',
+    marginLeft: 'auto',
+    marginRight: '40px',
+    alignItems: 'flex-end',     
+  },
+  buttonsLI: {
+    fontSize: '30px',
+    alignItems: 'flex-end', 
+    color: "white",
+    opacity: 0.8,
+    border: "none",
+    marginLeft: "5px"
+  },
+};
 
 const Header = () => {
   const logout = (event) => {
@@ -29,26 +31,20 @@ const Header = () => {
     <header className="Navbar">
       <Navbar bg="purple" variant="dark">
         <Container>
-          <Image
-            alt="bryanbot"
-            src="./images/logo4.jpg"
-            width="150"
-            height="80"
+          {" "}
+          <Navbar.Brand href="./" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
 
-            className="d-inline-block align-top"
-          />{" "}
-          <Navbar.Brand href="./" style={styles.button} >BryanBot</Navbar.Brand>
           {Auth.loggedIn() ? (
             <>
-              <Link className="PH" to="./me">
+              <Nav.Link style={styles.buttonsLI} className="mr-5" href="./me" to="./me">
                 {Auth.getProfile().data.username}
-
-              </Link>
-              <button className="PH" onClick={logout}>
+              </Nav.Link>
+              <Button style={styles.buttonsLI} type="button" className="btn btn-link" onClick={logout}>
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
+
             <>
               <Nav >
                 <Nav.Link href="./Login" to="./Login"
