@@ -15,7 +15,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Explanations from './components/Explanations';
+import Contact from './pages/Contact';
 import back1 from "./images/back1.jpg";
 
 const styles = {
@@ -85,6 +85,10 @@ const httpLink = createHttpLink({
                 <Route 
                   path="/me" 
                   element={<Profile />}
+                />
+                <Route
+                  path="/contact"
+                  element={<Contact />}
                 />
                 <Route 
               path='*' 
