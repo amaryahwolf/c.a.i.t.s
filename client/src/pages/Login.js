@@ -24,7 +24,7 @@ const styles = {
   },
 
   between: {
-    marginBottom: "40px",
+    marginBottom: "30px",
   },
 
   submit: {
@@ -35,11 +35,12 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '40px',
+    marginBottom: '-10px',
     display: 'block',
     paddingLeft: '50px',
     paddingRight: '50px',
     fontSize: '20px',
-    // fontFamily: "'Rubik Microbe', cursive",
+    fontFamily: "'VT323', monospace",
 
   },
 
@@ -69,7 +70,9 @@ const Login = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [emailError, setEmailError] = useState("");
-  console.log("rendered component")
+  const [passwordError, setPasswordError] = useState("");
+  console.log("rendered component");
+
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
@@ -112,44 +115,36 @@ const Login = () => {
     });
   };
 
+  // Logic to check email, with alerts
   const emailValidator = () => {
-    console.log(userFormData.email)
+    console.log(userFormData.email);
     if (!userFormData.email) {
-      console.log("no email")
+      console.log("no email");
       setEmailError("Email is required");
     } else if (!new RegExp(/\S+@\S+\.\S+/).test(userFormData.email)) {
-      console.log("wrong email")
+      console.log("wrong email");
       setEmailError("Incorrect email format");
-      console.log(emailError)
+      console.log(emailError);
     } else {
-      setEmailError("")
+      setEmailError("");
     }
-    console.log(emailError)
+    console.log(emailError);
+  };
+
+  // Logic to double check PW credentials
+  const passwordValidator = () => {
+    if (!userFormData.password) {
+      setPasswordError("Password is required");
+    } else if (userFormData.password.length < 8) {
+      setPasswordError("Password must have a minimum 8 characters");
+    } else {
+      setPasswordError("");
+    }
   };
 
   return (
     <>
-
-<Image
-        alt="stars"
-        src="./images/stars.gif"
-        style={styles.stars1}
-        height="80"
-      />
-
-<Image
-        alt="stars"
-        src="./images/stars.gif"
-        style={styles.stars2}
-        height="50"
-      />
-
-    
-
-      <Form
-        onSubmit={handleFormSubmit}
-        style={styles.body}
-      >
+      <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -172,11 +167,7 @@ const Login = () => {
             onBlur={emailValidator}
             required
           />
-          {emailError && (
-            <p>
-              {emailError}
-            </p>
-          )}
+          {emailError && <p>{emailError}</p>}
         </Form.Group>
 
         <Form.Group>
@@ -189,11 +180,10 @@ const Login = () => {
             name="password"
             onChange={handleInputChange}
             value={userFormData.password}
+            onBlur={passwordValidator}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
+          {passwordError && <p>{passwordError}</p>}
         </Form.Group>
 
 

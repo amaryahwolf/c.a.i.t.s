@@ -35,6 +35,7 @@ const styles = {
     borderWidth: '1px',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginBottom: '-10px',
     marginTop: '40px',
     display: 'block',
     paddingLeft: '50px',

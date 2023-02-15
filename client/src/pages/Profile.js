@@ -13,6 +13,25 @@ import { REMOVE_EXPLANATION } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+const styles = {
+  CardQ: {
+    color: "white",
+    viewHeight: "100%",
+    background: "linear-gradient(#8E2DE2, #4A00E0)",
+    fontFamily: "Arial",
+    textAlign: "center",
+    opacity: "0.7",
+    marginTop: "50px",
+    padding: "50px",
+    opacity: "0.8",
+    borderRadius: "20px",
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    flexWrap: "wrap",
+  },
+};
+
 const Profile = () => {
 
   const { loading, data } = useQuery(QUERY_ME);
@@ -62,7 +81,7 @@ const Profile = () => {
             return (
               <Card key={explanation._id} border="dark">
                 <Card.Body>
-                  <Card.Text>{explanation.question}</Card.Text>
+                  <Card.Text style={styles.CardQ}>{explanation.question}</Card.Text>
                   <Card.Text>{explanation.response}</Card.Text>
                   <Button
                     className="btn-block btn-danger"
