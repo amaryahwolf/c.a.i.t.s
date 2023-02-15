@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Image } from "react-bootstrap";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -24,7 +24,7 @@ const styles = {
   },
 
   between: {
-    marginBottom: "40px",
+    marginBottom: "30px",
   },
 
   submit: {
@@ -35,17 +35,33 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '40px',
+    marginBottom: '-10px',
     display: 'block',
     paddingLeft: '50px',
     paddingRight: '50px',
     fontSize: '20px',
-    // fontFamily: "'Rubik Microbe', cursive",
+    fontFamily: "'VT323', monospace",
 
   },
 
-  // font: {
-  // fontFamily: "'Rubik Microbe', cursive",
-  // },
+  stars2: {
+    marginRight: 'auto',
+    marginLeft: '130px',
+    marginTop: '130px',
+    display: 'inline-block',
+    position: 'absolute',
+  },
+
+  stars1: {
+    marginRight: '0',
+    marginLeft: '1100px',
+    marginTop: '200px',
+    display: 'block',
+    position: "absolute"
+  },
+
+
+
 };
 // check if form has everything (as per react-bootstrap docs)
 
@@ -54,7 +70,9 @@ const Login = () => {
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [emailError, setEmailError] = useState("");
-console.log("rendered component")
+  const [passwordError, setPasswordError] = useState("");
+  console.log("rendered component");
+
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
@@ -97,27 +115,36 @@ console.log("rendered component")
     });
   };
 
+  // Logic to check email, with alerts
   const emailValidator = () => {
-    console.log(userFormData.email)
+    console.log(userFormData.email);
     if (!userFormData.email) {
-      console.log("no email")
+      console.log("no email");
       setEmailError("Email is required");
     } else if (!new RegExp(/\S+@\S+\.\S+/).test(userFormData.email)) {
-      console.log("wrong email")
+      console.log("wrong email");
       setEmailError("Incorrect email format");
-      console.log(emailError)
+      console.log(emailError);
     } else {
-      setEmailError("")
+      setEmailError("");
     }
-    console.log(emailError)
+    console.log(emailError);
+  };
+
+  // Logic to double check PW credentials
+  const passwordValidator = () => {
+    if (!userFormData.password) {
+      setPasswordError("Password is required");
+    } else if (userFormData.password.length < 8) {
+      setPasswordError("Password must have a minimum 8 characters");
+    } else {
+      setPasswordError("");
+    }
   };
 
   return (
     <>
-      <Form
-  onSubmit={handleFormSubmit}
-        style={styles.body}
-      >
+      <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -140,11 +167,7 @@ console.log("rendered component")
             onBlur={emailValidator}
             required
           />
-          {emailError && (
-            <p>
-              {emailError}
-            </p>
-          )}
+          {emailError && <p>{emailError}</p>}
         </Form.Group>
 
         <Form.Group>
@@ -157,22 +180,21 @@ console.log("rendered component")
             name="password"
             onChange={handleInputChange}
             value={userFormData.password}
+            onBlur={passwordValidator}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
+          {passwordError && <p>{passwordError}</p>}
         </Form.Group>
-      
 
-      <Button
-        disabled={!(userFormData.email && userFormData.password)}
-        type='submit'
-        variant='success'
-        style={styles.submit}
-        className='font'>
-        Submit
-      </Button>
+
+        <Button
+          disabled={!(userFormData.email && userFormData.password)}
+          type='submit'
+          variant='success'
+          style={styles.submit}
+          className='font'>
+          Submit
+        </Button>
       </Form>
 
     </>

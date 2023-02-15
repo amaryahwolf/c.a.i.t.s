@@ -1,8 +1,10 @@
 //importing react and the {useQuery}
 import { printIntrospectionSchema } from "graphql";
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button } from "react-bootstrap";
-import { motion } from 'framer-motion'
+import { Container, Form, Button, Card } from "react-bootstrap";
+import { motion } from 'framer-motion';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import { useMutation } from '@apollo/client';
 import { ADD_EXPLANATION } from '../utils/mutations';
@@ -21,7 +23,7 @@ const styles = {
     padding: "150px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "600px",
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
@@ -37,7 +39,7 @@ const styles = {
     padding: "150px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "600px",
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
@@ -76,17 +78,13 @@ const styles = {
 
 const Home = () => {
 
-  // Create state for user question
   const [userQuestion, setUserQuestion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  // Create state for ai response - not sure if necessary
   const [aiResponse, setAiResponse] = useState('');
 
   // Create addExplanation variable to use mutation
   const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
 
-  // Console log aiResponse so we can see its value
   useEffect(() => {
     console.log(aiResponse)
   }, [aiResponse])
@@ -114,6 +112,22 @@ const Home = () => {
     }
   };
 
+  // Method to clear forms so user can enter next code snippet
+  const clearForms = async (event) => {
+    event.preventDefault();
+    setAiResponse('');
+    setUserQuestion('');
+  }
+
+  // Method to copy AI's response to clipboard
+  const handleCopy = async (event) => {
+    event.preventDefault();
+    const copyText = aiResponse;
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+  }
+
   return (
     <>
       <Container style={styles.containerStyle}>
@@ -133,12 +147,12 @@ const Home = () => {
             </Button>
           </Form>
         </Container>
-        {/* TODO: replace with spinning BryanBot icon */}
-        <div>
+        
           <div style={styles.spinnerContainer}>
             {isLoading && (
-              <motion.div initial={{ opacity: 0 }} exit={{ opacity: 0 }} animate={{ opacity: 1 }} style={styles.motion}>
-                <div className="spinner-border text-primary" role="status">
+              <motion.div initial={{ opacity: 1 }} exit={{ opacity: 1 }} animate={{ opacity: 1 }} style={styles.motion}>
+                <div className="spinner-border text-light" role="status">
+                  {/* TODO: replace with spinning BryanBot icon */}
                   <span className="visually-hidden">Loading...</span>
                 </div>
               </motion.div>
@@ -150,10 +164,13 @@ const Home = () => {
               placeholder="View BryanBot's explanation here!"
               style={styles.explanation}
               as="textarea">
-
+            {/* <FontAwesomeIcon icon="fa-regular fa-copy" onClick={handleCopy}/> */}
             </Container>
-          </div>
-        </div>
+           
+            <Button type="submit" variant="success" style={styles.submit} onClick={clearForms}>
+              Next Question!
+            </Button>
+          </div>    
       </Container>
     </>
   );
