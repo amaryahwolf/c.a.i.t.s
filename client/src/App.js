@@ -17,6 +17,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Explanations from './components/Explanations';
 import back1 from "./images/back1.jpg";
+import './pages/font.css';
+
+const styles = {
+  font: {
+    fontFamily: "'VT323', monospace"
+  }
+}
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,7 +57,10 @@ const httpLink = createHttpLink({
         backgroundImage: 'url('+back1+')',
         backgroundSize: "cover",
         height: "100vh",
-      }}
+        fontFamily: "'VT323', monospace",
+      }
+    }
+
     >
       <ApolloProvider client={client}>
      
