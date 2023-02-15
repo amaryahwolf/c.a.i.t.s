@@ -101,7 +101,7 @@ const Home = () => {
       const { data } = await addExplanation({
         variables: {
           question: userQuestion,
-          response: aiResponse
+          // response: aiResponse
         },
       });
       console.log(data)
