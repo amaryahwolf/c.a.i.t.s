@@ -52,41 +52,40 @@ const resolvers = {
           presence_penalty: 0.0,
           stop: ["\"\"\""],
           });
-          // const headers = {
-          //   'Authorization': `Bearer ${process.env.OPENAI_SECRET_KEY}`
-          // }
+
           console.log(response)
-          const explanationData = await Explanation.create({
-            question,
-            response: response.data.choices[0].text
-          })
-          console.log(explanationData)
 
           // TODO: add conditional logic to only update user if user is logged in, else return
-          // if (userData) {
+
           const userData = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { explanations: explanationData._id } }
+            { $addToSet: { explanations: { question, response: response.data.choices[0].text } } },
+            { new: true }
           );
-          // console.log(response.data.choices[0].text)
+          console.log(response.data.choices[0].text)
           console.log(userData)
-          // }
-          // return {question, response: response.data.choices[0].text}
-          return explanationData
+
+          return { response: response.data.choices[0].text}
         },
 
         // Delete a user's associated explanation
-        removeExplanation: async (parent, { _id }, context) => {
-          if (context.user) {
+        removeExplanation: async (parent, { explanationId }, context) => {
+          console.log("ExplID", explanationId)
+          try {
+            if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
               { _id: context.user._id },
-              { $pull: { explanations: { _id } } },
+              { $pull: { explanations: { explanationId: explanationId } } },
               { new: true }
             );
+            console.log("updatedUser" ,updatedUser);
             return updatedUser;
           }
           throw new AuthenticationError('You need to be logged in!');
+        } catch (error) {
+          throw new AuthenticationError(error)
         }
+      } 
       }
 };
 
