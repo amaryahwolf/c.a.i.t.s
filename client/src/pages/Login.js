@@ -113,6 +113,7 @@ const Login = () => {
     console.log(emailError);
   };
 
+  // Logic to double check PW credentials
   const passwordValidator = () => {
     if (!userFormData.password) {
       setPasswordError("Password is required");
