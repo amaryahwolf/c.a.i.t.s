@@ -32,6 +32,7 @@ const httpLink = createHttpLink({
       headers: {
         ...headers,
         authorization: token ? `Bearer ${token}` : '',
+        // 'Authorization': `Bearer ${process.env.OPENAI_SECRET_KEY}`
       },
     };
   });
