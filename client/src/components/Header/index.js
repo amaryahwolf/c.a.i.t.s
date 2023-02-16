@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Image } from 'react-bootstrap';
+import { Navbar, Nav, Container, Image, } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 

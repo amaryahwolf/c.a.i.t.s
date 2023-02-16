@@ -1,13 +1,13 @@
 //importing react and the {useQuery}
-import { printIntrospectionSchema } from "graphql";
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Card } from "react-bootstrap";
+import { Container, Form, Button, } from "react-bootstrap";
 import { motion } from 'framer-motion';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import { useMutation } from '@apollo/client';
 import { ADD_EXPLANATION } from '../utils/mutations';
+
 
 // import Auth from '../utils/auth';
 
@@ -21,7 +21,6 @@ const styles = {
     opacity: "0.4",
     marginTop: "100px",
     padding: "150px",
-    opacity: "0.8",
     borderRadius: "20px",
     width: "600px",
     marginLeft: "auto",
@@ -37,7 +36,6 @@ const styles = {
     opacity: "0.4",
     marginTop: "100px",
     padding: "150px",
-    opacity: "0.8",
     borderRadius: "20px",
     width: "600px",
     marginLeft: "auto",
@@ -128,8 +126,10 @@ const Home = () => {
     navigator.clipboard.writeText(copyText.value);
   }
 
+ 
   return (
     <>
+
       <Container style={styles.containerStyle}>
         <Container fluid>
           <Form onSubmit={handleFormSubmit}>
