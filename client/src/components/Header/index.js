@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Image } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
 
@@ -31,6 +31,16 @@ const Header = () => {
     <header className="Navbar">
       <Navbar bg="purple" variant="dark">
         <Container>
+          <Nav.Link href="./contact"
+            to="./contact">
+        <Image
+            alt="bryanbot"
+            src="./images/logo4.jpg"
+            width="170"
+            height="110"
+            className="d-inline-block mt-3"  
+          />
+          </Nav.Link>
           {" "}
           <Navbar.Brand href="./" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
 

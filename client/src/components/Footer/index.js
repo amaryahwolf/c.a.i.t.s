@@ -14,7 +14,7 @@ const styles = {
 const Footer = () => {
   return (
     <>
-      <Navbar bg="" variant="light" fixed="bottom">
+      {/* <Navbar bg="" variant="light" fixed="bottom">
         <Container fixed>
           <Navbar.Brand href="#home">
           <Nav className="">
@@ -31,7 +31,7 @@ const Footer = () => {
             </Nav>
           </Navbar.Brand>
         </Container>
-      </Navbar>
+      </Navbar> */}
     </>
   );
 };

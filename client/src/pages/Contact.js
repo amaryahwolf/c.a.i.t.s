@@ -8,7 +8,7 @@ const styles = {
         padding: "50px",
         opacity: "0.8",
         borderRadius: "20px",
-        width: "50%",
+        width: "70%",
         marginLeft: "auto",
         marginRight: "auto",
       },
@@ -22,7 +22,7 @@ const styles = {
 const Contact = () => {
     return (
         <Container style={styles.body}>
-            <h1>Charlie's Angels in the Sky</h1>
+            <h1>This application is made possible thanks to... <br></br>Charlie's Angels in the Sky</h1>
             <a href="https://github.com/Allie-Ang" target="__blank" style={styles.text}>Allie Ang</a> <br></br>
             <a href="https://github.com/amaryahwolf" target="__blank" style={styles.text}>Amaryah Wolf</a> <br></br>
             <a href="https://github.com/sjk777" target="__blank" style={styles.text}>Sky Kim</a> <br></br>
