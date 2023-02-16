@@ -92,9 +92,6 @@ const styles = {
     position: 'fixed',
     bottom: '80px'
 
-  }
-
-    justifyContent: "center",
   },
   marquee: {
     color: "white",
