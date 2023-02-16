@@ -194,8 +194,8 @@ const Home = () => {
               >
                 <Alert.Heading>Oops!</Alert.Heading>
                 <p>
-                  Please <a href="./login">login</a> or{" "}
-                  <a href="./signup">signup</a> to begin your journey with
+                  Please login or
+                  signup to begin your journey with
                   BryanBot!
                 </p>
               </Alert>
