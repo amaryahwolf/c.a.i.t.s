@@ -32,7 +32,7 @@ const Header = () => {
       <Navbar bg="purple" variant="dark">
         <Container>
           <Nav.Link
-            to="/contact">
+            href="/contact">
         <Image
             alt="bryanbot"
             src="./images/logo4.jpg"
@@ -46,7 +46,7 @@ const Header = () => {
 
           {Auth.loggedIn() ? (
             <>
-              <Nav.Link style={styles.buttonsLI} className="mr-5" to="/me">
+              <Nav.Link style={styles.buttonsLI} className="mr-5" href="/me">
                 {Auth.getProfile().data.username}
               </Nav.Link>
               <Button style={styles.buttonsLI} type="button" className="btn btn-link" onClick={logout}>
@@ -57,10 +57,10 @@ const Header = () => {
 
             <>
               <Nav >
-                <Nav.Link  to="/login"
+                <Nav.Link  href="/login"
                   style={{fontSize:30}}
                     >Login</Nav.Link>
-                <Nav.Link  to="/signup"
+                <Nav.Link  href="/signup"
                   style={{fontSize:30}}
                 >Signup</Nav.Link>
               </Nav>
