@@ -9,8 +9,10 @@ const styles = {
   buttonsLO: {
     fontSize: '30px',
     marginLeft: 'auto',
-    marginRight: '40px',
+    marginRight: '20px',
     alignItems: 'flex-end',     
+    textDecoration: "none",
+    color: "white"
   },
   buttonsLI: {
     fontSize: '30px',
@@ -18,7 +20,9 @@ const styles = {
     color: "white",
     opacity: 0.8,
     border: "none",
-    marginLeft: "5px"
+    marginLeft: "5px",
+    marginRight: "5px",
+    textDecoration: "none"
   },
 };
 
@@ -42,7 +46,9 @@ const Header = () => {
           />
           </Link>
           {" "}
-          <Navbar.Brand to="/" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
+          <Link to="/" style={styles.buttonsLO} > 
+          <Navbar >BryanBot</Navbar>
+          </Link>
 
           {Auth.loggedIn() ? (
             <>
@@ -58,10 +64,12 @@ const Header = () => {
             <>
               <Nav >
                 <Link to="/login"
-                  style={{fontSize:30}}
+                  style={styles.buttonsLI}
+                  className="mr-5"
                     >Login</Link>
                 <Link to="/signup"
-                  style={{fontSize:30}}
+                  style={styles.buttonsLI}
+                  className="mr-5"
                 >Signup</Link>
               </Nav>
             </>
