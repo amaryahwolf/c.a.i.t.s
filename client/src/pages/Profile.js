@@ -5,6 +5,8 @@ import {
   CardColumns,
   Card,
   Button,
+  Row,
+  Col
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -16,11 +18,8 @@ import Auth from '../utils/auth';
 const styles = {
   jumbo:{
     color: "white",
-    opacity: '0.8',
     viewHeight: "100%",
     textAlign: "center",
-    marginTop: "50px",
-    padding: "10px",
     width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -33,7 +32,6 @@ const styles = {
     viewHeight: "100%",
     background: "linear-gradient(#8E2DE2, #4A00E0)",
     textAlign: "center",
-    marginTop: "5px",
     padding: "5px",
     opacity: "0.8",
     borderRadius: "20px",
@@ -45,17 +43,10 @@ const styles = {
     fontFamily: "'VT323', monospace",
   },
   body: {
-    // background: "linear-gradient(#8E2DE2, #4A00E0)", 
-    // background: 'rgba (0, 0, 0, 0.1) !important',
     backgroundColor: 'white',
     opacity: '0.8',
     display: 'flex',
     borderRadius: '5px',
-    flexDirection: 'column'
-
-
-
-
   },
   question: {
     color: "white",
@@ -64,14 +55,12 @@ const styles = {
     textAlign: "center",
     margin: "10px",
     padding: "10px",
-    // opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "50%",
     flexWrap: "wrap",
-    fontSize: '20px',
+    fontSize: '25px',
     fontFamily: "'VT323', monospace",
   },
-  
   response:{
     color: "white",
     viewHeight: "100%",
@@ -79,15 +68,24 @@ const styles = {
     textAlign: "center",
     marginTop: "10px",
     padding: "10px",
-    // opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "50%",
     flexWrap: "wrap",
-    fontSize: '20px',
+    fontSize: '25px',
     fontFamily: "'VT323', monospace",
   }, 
   button: {
-    
+    opacity: '1',
+    backgroundColor: 'deeppink',
+    borderColor: 'pink',
+    borderWidth: '1px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '10px',
+    // display: 'block',
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    fontSize: '20px'
   }
 };
 
@@ -137,19 +135,20 @@ const Profile = () => {
               }...`
             : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
         </h2>
-        <CardColumns style={{overflow:"auto", height:"450px"}}>
+        <CardColumns style={{overflow:"auto", height:"500px"}}>
           {userData.explanations?.map((explanation) => {
             return (
               <Card key={explanation.explanationId} border="dark" style={styles.body} >
                 <Card.Body className="">
-                  <Card.Text style={styles.question}>Code Block: {explanation.question}</Card.Text>
-                  <Card.Text style={styles.response}>Explanation: {explanation.response}</Card.Text>
+                  <Row>
+                  <Col style={styles.question}>Code Block: {explanation.question}</Col>                                               
+                  <Col style={styles.response}>Explanation: {explanation.response}</Col>
+                  </Row>
                   <Button
                     style={styles.button}
                     className="btn-danger"
-                    onClick={() => handleDeleteExplanation(explanation.explanationId)}
-                  >
-                    Delete this Explanation!
+                    onClick={() => handleDeleteExplanation(explanation.explanationId)}>
+                    Delete
                   </Button>
                 </Card.Body>
               </Card>
