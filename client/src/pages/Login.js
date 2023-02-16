@@ -86,7 +86,25 @@ const styles = {
        
   },
 
+allie: {
 
+  marginRight: 'auto',
+  marginLeft: '200px',
+  display: 'inline-block',
+  position: 'fixed',
+  bottom: '20px'
+
+},
+
+shiba: {
+
+  marginRight: 'auto',
+  marginLeft: '280px',
+  display: 'inline-block',
+  position: 'fixed',
+  bottom: '35px'
+
+}
 
 };
 // check if form has everything (as per react-bootstrap docs)
@@ -255,7 +273,7 @@ const Login = () => {
         height="100"
         className="float-right"
       />
-      <Image
+      {/* <Image
         alt="car1"
         src="./images/car.gif"
         style={styles.car1}
@@ -263,6 +281,22 @@ const Login = () => {
         height="100"
         className="float-right"
       />
+ */}
+<Image
+        alt="allie"
+        src="./images/allie.png"
+        style={styles.allie}
+        width="150"
+        height="100"
+      />
+<Image
+        alt="shiba"
+        src="./images/shiba.gif"
+        style={styles.shiba}
+        width="50"
+        height="50"
+      />
+
 
     </>
   );
