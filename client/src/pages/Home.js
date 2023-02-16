@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Card } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 import { motion } from 'framer-motion';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 import { ADD_EXPLANATION } from '../utils/mutations';
 
 // import Auth from '../utils/auth';
@@ -79,9 +80,14 @@ const Home = () => {
   const [userQuestion, setUserQuestion] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState('');
+  const [alert, setAlert] = useState(false);
 
   // Create addExplanation variable to use mutation
   const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
+  const { loading, data } = useQuery(QUERY_ME);
+
+  const userData = data?.me || null;
+  console.log(userData)
 
   useEffect(() => {
     console.log(aiResponse)
@@ -90,7 +96,13 @@ const Home = () => {
   // Method to send user question to AI and return response
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    if(!userData) {
+      setAlert(true);
+    }
+
     setIsLoading(true)
+
     if (!userQuestion) {
       return false;
     }
@@ -140,9 +152,17 @@ const Home = () => {
               placeholder="Enter your code snippet here!"
               style={styles.question}
             />
-            <Button type="submit" variant="success" style={styles.submit}>
+            <Button type="submit" variant="success" style={styles.submit} onClick={() => setAlert()}>
               Submit Question
             </Button>
+            {alert && (
+             <Alert variant="primary" onClose={() => setAlert(false)} dismissible>
+             <Alert.Heading>Oops!</Alert.Heading>
+             <p>
+               Please <a href="./login">login</a> or <a href="./signup">signup</a> to begin your journey with BryanBot!
+             </p>
+           </Alert>
+          )}
           </Form>
         </Container>
         
