@@ -25,7 +25,7 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
-    fontSize: '40px',
+    fontSize: '30px',
     fontFamily: "'VT323', monospace",
   },
   header: {
@@ -40,7 +40,7 @@ const styles = {
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
-    fontSize: '30px',
+    fontSize: '25px',
     fontFamily: "'VT323', monospace",
   },
   body: {
@@ -59,7 +59,7 @@ const styles = {
     borderRadius: "20px",
     width: "50%",
     flexWrap: "wrap",
-    fontSize: '25px',
+    fontSize: '20px',
     fontFamily: "'VT323', monospace",
   },
   response: {
@@ -72,7 +72,7 @@ const styles = {
     borderRadius: "20px",
     width: "50%",
     flexWrap: "wrap",
-    fontSize: '25px',
+    fontSize: '20px',
     fontFamily: "'VT323', monospace",
   },
   button: {
@@ -84,9 +84,9 @@ const styles = {
     marginRight: 'auto',
     marginTop: '10px',
     display: 'block',
-    paddingLeft: '70px',
-    paddingRight: '70px',
-    fontSize: '20px'
+    paddingLeft: '40px',
+    paddingRight: '40px',
+    fontSize: '18px'
   },
 
   stars1: {
