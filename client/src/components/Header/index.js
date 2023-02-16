@@ -9,8 +9,10 @@ const styles = {
   buttonsLO: {
     fontSize: '30px',
     marginLeft: 'auto',
-    marginRight: '40px',
+    marginRight: '20px',
     alignItems: 'flex-end',     
+    textDecoration: "none",
+    color: "white"
   },
   buttonsLI: {
     fontSize: '30px',
@@ -18,7 +20,9 @@ const styles = {
     color: "white",
     opacity: 0.8,
     border: "none",
-    marginLeft: "5px"
+    marginLeft: "5px",
+    marginRight: "5px",
+    textDecoration: "none"
   },
 };
 
@@ -31,8 +35,8 @@ const Header = () => {
     <header className="Navbar">
       <Navbar bg="purple" variant="dark">
         <Container>
-          <Nav.Link href="./contact"
-            to="./contact">
+          <Link
+             to="/contact">
         <Image
             alt="bryanbot"
             src="./images/logo4.jpg"
@@ -40,15 +44,17 @@ const Header = () => {
             height="110"
             className="d-inline-block mt-3"  
           />
-          </Nav.Link>
+          </Link>
           {" "}
-          <Navbar.Brand href="./" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
+          <Link to="/" style={styles.buttonsLO} > 
+          <Navbar >BryanBot</Navbar>
+          </Link>
 
           {Auth.loggedIn() ? (
             <>
-              <Nav.Link style={styles.buttonsLI} className="mr-5" href="./me" to="./me">
+              <Link style={styles.buttonsLI} className="mr-5" to="/me">
                 {Auth.getProfile().data.username}
-              </Nav.Link>
+              </Link>
               <Button style={styles.buttonsLI} type="button" className="btn btn-link" onClick={logout}>
                 Logout
               </Button>
@@ -57,12 +63,14 @@ const Header = () => {
 
             <>
               <Nav >
-                <Nav.Link href="./Login" to="./Login"
-                  style={{fontSize:30}}
-                    >Login</Nav.Link>
-                <Nav.Link href="./Signup" to="./Signup"
-                  style={{fontSize:30}}
-                >Signup</Nav.Link>
+                <Link to="/login"
+                  style={styles.buttonsLI}
+                  className="mr-5"
+                    >Login</Link>
+                <Link to="/signup"
+                  style={styles.buttonsLI}
+                  className="mr-5"
+                >Signup</Link>
               </Nav>
             </>
           )}
