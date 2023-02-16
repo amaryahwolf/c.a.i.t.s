@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
-import { motion } from "framer-motion";
+import { Container, Form, Button, Alert, Image} from "react-bootstrap";
+import { motion } from 'framer-motion';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
@@ -70,12 +71,36 @@ const styles = {
     height: "100%",
     display: "flex",
     alignItems: "center",
+    justifyContent: "center"
+  },
+
+  sky: {
+
+    marginRight: 'auto',
+    marginLeft: '170px',
+    display: 'inline-block',
+    position: 'fixed',
+    bottom: '80px'
+
+  },
+
+  amaryah: {
+
+    marginRight: 'auto',
+    marginLeft: '800px',
+    display: 'inline-block',
+    position: 'fixed',
+    bottom: '80px'
+
+  }
+
     justifyContent: "center",
   },
   marquee: {
     color: "white",
     display: "flex",
   },
+
 };
 
 const Home = () => {
@@ -218,6 +243,24 @@ const Home = () => {
           </Button>
         </div>
       </Container>
+
+      <Image
+        alt="sky"
+        src="./images/sky.png"
+        style={styles.sky}
+        width="150"
+        height="100"
+      />
+
+<Image
+        alt="amaryah"
+        src="./images/amaryah.png"
+        style={styles.amaryah}
+        width="180"
+        height="90"
+      />
+
+
     </>
   );
 };

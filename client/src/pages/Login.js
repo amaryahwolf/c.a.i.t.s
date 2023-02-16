@@ -66,9 +66,45 @@ const styles = {
     display: 'block',
     position: 'absolute',
     marginTop: '-100px'
-  }
+  },
 
+  car: {
+    marginRight: '0',
+    marginLeft: '1100px',
+    display: 'block',
+        bottom: '10px',
+        position: 'fixed'
+       
+  },
 
+  car1: {
+    marginRight: '0',
+    marginLeft: '200px',
+    display: 'block',
+        bottom: '10px',
+        position: 'fixed'
+       
+  },
+
+allie: {
+
+  marginRight: 'auto',
+  marginLeft: '200px',
+  display: 'inline-block',
+  position: 'fixed',
+  bottom: '20px'
+
+},
+
+shiba: {
+
+  marginRight: 'auto',
+  marginLeft: '280px',
+  display: 'inline-block',
+  position: 'fixed',
+  bottom: '35px'
+
+}
 
 };
 // check if form has everything (as per react-bootstrap docs)
@@ -174,6 +210,7 @@ const Login = () => {
       />
 
 
+
       <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
@@ -226,6 +263,40 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+
+
+      <Image
+        alt="car"
+        src="./images/car.gif"
+        style={styles.car}
+        width="100"
+        height="100"
+        className="float-right"
+      />
+      {/* <Image
+        alt="car1"
+        src="./images/car.gif"
+        style={styles.car1}
+        width="100"
+        height="100"
+        className="float-right"
+      />
+ */}
+<Image
+        alt="allie"
+        src="./images/allie.png"
+        style={styles.allie}
+        width="150"
+        height="100"
+      />
+<Image
+        alt="shiba"
+        src="./images/shiba.gif"
+        style={styles.shiba}
+        width="50"
+        height="50"
+      />
+
 
     </>
   );
