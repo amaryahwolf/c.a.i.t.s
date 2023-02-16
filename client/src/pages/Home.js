@@ -8,6 +8,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { ADD_EXPLANATION } from "../utils/mutations";
 
+
 // import Auth from '../utils/auth';
 
 const styles = {
@@ -20,7 +21,6 @@ const styles = {
     opacity: "0.4",
     marginTop: "100px",
     padding: "150px",
-    opacity: "0.8",
     borderRadius: "20px",
     width: "600px",
     marginLeft: "auto",
@@ -36,7 +36,6 @@ const styles = {
     opacity: "0.4",
     marginTop: "100px",
     padding: "150px",
-    opacity: "0.8",
     borderRadius: "20px",
     width: "600px",
     marginLeft: "auto",
@@ -141,6 +140,7 @@ const Home = () => {
     navigator.clipboard.writeText(copyText.value);
   };
 
+ 
   return (
     <>
       <div class="example5" style={styles.marquee}>
