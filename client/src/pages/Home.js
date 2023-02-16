@@ -211,8 +211,8 @@ const Home = () => {
               animate={{ opacity: 1 }}
               style={styles.motion}
             >
-              <div className="spinner-border text-light" role="status">
-                {/* TODO: replace with spinning BryanBot icon */}
+              <div role="status">
+              <img src="https://piskel-imgstore-b.appspot.com/img/38cc5c91-ae32-11ed-9b84-bb8b9bc91f9d.gif" alt="loading..." />
                 <span className="visually-hidden">Loading...</span>
               </div>
             </motion.div>
