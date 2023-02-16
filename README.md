@@ -22,6 +22,9 @@ To install the application, clone the repository from Github and run the install
 
 ## Usage
 Upon opening the application, the user is presented with the 'BryanBot' homepage with an instruction banner explaining that BryanBot's purpose is to take code blocks and explain them in plain English, and save the user's query history. If the user wants to use BryanBot, they make create an account or log in with a pre-existing account. After logging in, the user can view their past question/response data and navigate to BryanBot to make a query. To use BryanBot, type or paste a code block into the left-most block and click the Submit button. The question is sent to the AI and the user awaits the response. The user will then receive the AI's translation on the right-most block and can view their saved query in their Profile page.
+<br>
+![Screenshot of application](./client/public/images/app-screenshot1.png)
+![Screenshot of application](./client/public/images/app-screenshot2.png)
 
 ## Credits
 ### Developers:
@@ -42,7 +45,7 @@ Upon opening the application, the user is presented with the 'BryanBot' homepage
 - Bootstrap
 - Google Fonts
 - Framer Motion
-- Howler
+- React Player
 - Font Awesome
 
 ## License

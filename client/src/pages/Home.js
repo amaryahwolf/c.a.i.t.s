@@ -10,8 +10,6 @@ import { QUERY_ME } from "../utils/queries";
 import { ADD_EXPLANATION } from "../utils/mutations";
 
 
-// import Auth from '../utils/auth';
-
 const styles = {
   question: {
     color: "white",
@@ -19,7 +17,7 @@ const styles = {
     background: "linear-gradient(#8E2DE2, #4A00E0)",
     fontFamily: "Arial",
     textAlign: "center",
-    opacity: "0.4",
+    opacity: "0.6",
     marginTop: "100px",
     padding: "150px",
     borderRadius: "20px",
@@ -34,7 +32,7 @@ const styles = {
     background: "linear-gradient(#b92b27, #1565C0)",
     fontFamily: "Arial",
     textAlign: "center",
-    opacity: "0.4",
+    opacity: "0.6",
     marginTop: "100px",
     padding: "150px",
     borderRadius: "20px",
