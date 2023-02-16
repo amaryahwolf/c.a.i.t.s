@@ -31,8 +31,8 @@ const Header = () => {
     <header className="Navbar">
       <Navbar bg="purple" variant="dark">
         <Container>
-          <Nav.Link
-            href="/contact">
+          <Link
+             to="/contact">
         <Image
             alt="bryanbot"
             src="./images/logo4.jpg"
@@ -40,15 +40,15 @@ const Header = () => {
             height="110"
             className="d-inline-block mt-3"  
           />
-          </Nav.Link>
+          </Link>
           {" "}
-          <Navbar.Brand href="/" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
+          <Navbar.Brand to="/" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
 
           {Auth.loggedIn() ? (
             <>
-              <Nav.Link style={styles.buttonsLI} className="mr-5" href="/me">
+              <Link style={styles.buttonsLI} className="mr-5" to="/me">
                 {Auth.getProfile().data.username}
-              </Nav.Link>
+              </Link>
               <Button style={styles.buttonsLI} type="button" className="btn btn-link" onClick={logout}>
                 Logout
               </Button>
@@ -57,12 +57,12 @@ const Header = () => {
 
             <>
               <Nav >
-                <Nav.Link  href="/login"
+                <Link to="/login"
                   style={{fontSize:30}}
-                    >Login</Nav.Link>
-                <Nav.Link  href="/signup"
+                    >Login</Link>
+                <Link to="/signup"
                   style={{fontSize:30}}
-                >Signup</Nav.Link>
+                >Signup</Link>
               </Nav>
             </>
           )}
