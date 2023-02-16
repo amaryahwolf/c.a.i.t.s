@@ -15,7 +15,7 @@ const styles = {
 
   body: {
     backgroundColor: 'white',
-    marginTop: '100px',
+    marginTop: '80px',
     padding: '50px',
     opacity: '0.8',
     borderRadius: '20px',
@@ -47,9 +47,9 @@ const styles = {
 
   heading: {
     color: 'white',
-    fontSize: '3px',
+    fontSize: '30px',
     marginBottom: '-60px',
-    marginTop: '40px',
+    marginTop: '2px',
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',
@@ -57,10 +57,22 @@ const styles = {
 
   pigeon: {
     marginRight: '0',
-    marginLeft: 'auto',
+    marginLeft: '1100px',
     display: 'block',
-        bottom: '0px'
+        bottom: '10px',
+        position: 'fixed'
+       
   },
+
+  pigeon1: {
+    marginRight: '0',
+    marginLeft: '1000px',
+    display: 'block',
+        bottom: '10px',
+        position: 'fixed'
+       
+  },
+
 
   stars1: {
     marginRight: 'auto',
@@ -96,6 +108,14 @@ const styles = {
     position: 'fixed',
     bottom: '110px'
 
+  },
+
+  chicken: {
+    marginRight: '0',
+    marginLeft: '510px',
+    display: 'block',
+    position: 'absolute',
+    marginTop: '-10px'
   }
 
 
@@ -161,8 +181,17 @@ const Signup = () => {
 
   return (
     <>
-      <h1 style={styles.heading}> Got questions? We have answers! </h1>
+      <h1 style={styles.heading}> Why did the robot chicken cross the road?
+He was programmed to. </h1>
       {/* This is needed for the validation functionality above */}
+
+      <Image
+        alt="chicken"
+        src="./images/chicken.gif"
+        style={styles.chicken}
+        height="40"
+      />
+
 
       <Image
         alt="stars"
@@ -241,6 +270,16 @@ const Signup = () => {
         height="70"
         className="float-right"
       />
+
+<Image
+        alt="pigeon1"
+        src="./images/pigeon.gif"
+        style={styles.pigeon1}
+        width="100"
+        height="70"
+        className="float-right"
+      />
+
 
 <Image
         alt="hello"

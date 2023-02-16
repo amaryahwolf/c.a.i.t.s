@@ -66,7 +66,25 @@ const styles = {
     display: 'block',
     position: 'absolute',
     marginTop: '-100px'
-  }
+  },
+
+  car: {
+    marginRight: '0',
+    marginLeft: '1100px',
+    display: 'block',
+        bottom: '10px',
+        position: 'fixed'
+       
+  },
+
+  car1: {
+    marginRight: '0',
+    marginLeft: '200px',
+    display: 'block',
+        bottom: '10px',
+        position: 'fixed'
+       
+  },
 
 
 
@@ -174,6 +192,7 @@ const Login = () => {
       />
 
 
+
       <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
@@ -226,6 +245,24 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+
+
+      <Image
+        alt="car"
+        src="./images/car.gif"
+        style={styles.car}
+        width="100"
+        height="100"
+        className="float-right"
+      />
+      <Image
+        alt="car1"
+        src="./images/car.gif"
+        style={styles.car1}
+        width="100"
+        height="100"
+        className="float-right"
+      />
 
     </>
   );

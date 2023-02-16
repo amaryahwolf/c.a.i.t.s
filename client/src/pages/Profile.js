@@ -6,7 +6,8 @@ import {
   Card,
   Button,
   Row,
-  Col
+  Col,
+  Image
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -16,7 +17,7 @@ import { REMOVE_EXPLANATION } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const styles = {
-  jumbo:{
+  jumbo: {
     color: "white",
     viewHeight: "100%",
     textAlign: "center",
@@ -27,7 +28,7 @@ const styles = {
     fontSize: '40px',
     fontFamily: "'VT323', monospace",
   },
-  header:{
+  header: {
     color: "white",
     viewHeight: "100%",
     background: "linear-gradient(#8E2DE2, #4A00E0)",
@@ -61,7 +62,7 @@ const styles = {
     fontSize: '25px',
     fontFamily: "'VT323', monospace",
   },
-  response:{
+  response: {
     color: "white",
     viewHeight: "100%",
     background: "linear-gradient(#b92b27, #1565C0)",
@@ -73,7 +74,7 @@ const styles = {
     flexWrap: "wrap",
     fontSize: '25px',
     fontFamily: "'VT323', monospace",
-  }, 
+  },
   button: {
     opacity: '1',
     backgroundColor: 'deeppink',
@@ -82,11 +83,28 @@ const styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: '10px',
-    // display: 'block',
-    paddingLeft: '50px',
-    paddingRight: '50px',
+    display: 'block',
+    paddingLeft: '70px',
+    paddingRight: '70px',
     fontSize: '20px'
-  }
+  },
+
+  stars1: {
+    marginRight: 'auto',
+    marginLeft: '280px',
+    marginTop: '30px',
+    display: 'inline-block',
+    position: 'absolute',
+  },
+
+  stars2: {
+    marginRight: 'auto',
+    marginLeft: '980px',
+    marginTop: '30px',
+    display: 'inline-block',
+    position: 'absolute',
+  },
+
 };
 
 const Profile = () => {
@@ -122,7 +140,21 @@ const Profile = () => {
 
   return (
     <>
-    <Jumbotron fluid style={styles.jumbo}>
+      <Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars1}
+        height="50"
+      />
+
+
+<Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars2}
+        height="50"
+      />
+      <Jumbotron fluid style={styles.jumbo}>
         <Container>
           <h1>Viewing {userData.username}'s Explanations!</h1>
         </Container>
@@ -130,19 +162,18 @@ const Profile = () => {
       <Container>
         <h2 style={styles.header}>
           {userData.explanations?.length
-            ? `You have ${userData.explanations.length} saved ${
-                userData.explanations.length === 1 ? 'explanation' : 'explanations'
-              }...`
+            ? `You have ${userData.explanations.length} saved ${userData.explanations.length === 1 ? 'explanation' : 'explanations'
+            }...`
             : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
         </h2>
-        <CardColumns style={{overflow:"auto", height:"500px"}}>
+        <CardColumns style={{ overflow: "auto", height: "500px" }}>
           {userData.explanations?.map((explanation) => {
             return (
               <Card key={explanation.explanationId} border="dark" style={styles.body} >
                 <Card.Body className="">
                   <Row>
-                  <Col style={styles.question}>Code Block: {explanation.question}</Col>                                               
-                  <Col style={styles.response}>Explanation: {explanation.response}</Col>
+                    <Col style={styles.question}>Code Block: {explanation.question}</Col>
+                    <Col style={styles.response}>Explanation: {explanation.response}</Col>
                   </Row>
                   <Button
                     style={styles.button}
