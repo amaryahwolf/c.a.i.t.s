@@ -1,6 +1,6 @@
 # BryanBot Model 1
 
-## [Deployed Application]()
+## [Deployed Application](https://bryanbot.herokuapp.com/)
 
 ## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -21,6 +21,7 @@ To view and interact with the application, visit the application's url in any br
 To install the application, clone the repository from Github and run the installation script ```npm run install``` followed by the start script ```npm run develop```.
 
 ## Usage
+Upon opening the application, the user is presented with the 'BryanBot' homepage with an instruction banner explaining that BryanBot's purpose is to take code blocks and explain them in plain English, and save the user's query history. If the user wants to use BryanBot, they make create an account or log in with a pre-existing account. After logging in, the user can view their past question/response data and navigate to BryanBot to make a query. To use BryanBot, type or paste a code block into the left-most block and click the Submit button. The question is sent to the AI and the user awaits the response. The user will then receive the AI's translation on the right-most block and can view their saved query in their Profile page.
 
 ## Credits
 ### Developers:
@@ -41,6 +42,7 @@ To install the application, clone the repository from Github and run the install
 - Bootstrap
 - Google Fonts
 - Framer Motion
+- Howler
 - Font Awesome
 
 ## License
