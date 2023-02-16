@@ -2,5 +2,7 @@
 ::placeholder {
     color: white;
     opacity: 1;
-    font-size: 18px
+    font-size: 22px;
+    font-family: 'VT323', monospace;
+    /* font-weight: bolder; */
 };

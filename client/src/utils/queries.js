@@ -7,7 +7,7 @@ export const QUERY_ME = gql`
       username
       email
       explanations {
-        _id
+        explanationId
         question
         response
       }

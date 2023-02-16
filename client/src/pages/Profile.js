@@ -5,6 +5,8 @@ import {
   CardColumns,
   Card,
   Button,
+  Row,
+  Col
 } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
@@ -14,81 +16,76 @@ import { REMOVE_EXPLANATION } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const styles = {
-  cardMain:{
-    background: "linear-gradient(#8E2DE2, #4A00E0)",
-    
-  },
-  CardQ: {
-    color: "white",
-    viewHeight: "100%",
-    background: "linear-gradient(#800080, #ffc0cb)",
-    fontFamily: "Arial",
-    textAlign: "center",
-    opacity: "0.8",
-    marginTop: "10px",
-    padding: "10px",
-    opacity: "0.8",
-    borderRadius: "20px",
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    flexWrap: "wrap",
-    fontSize: '30px',
-    fontFamily: "'VT323', monospace",
-  },
   jumbo:{
     color: "white",
     viewHeight: "100%",
-    background: "linear-gradient(#FC466B, #3F5EFB)",
-    fontFamily: "Arial",
     textAlign: "center",
-    opacity: "0.7",
-    marginTop: "50px",
-    padding: "10px",
-    opacity: "0.8",
-    borderRadius: "20px",
-    width: "50%",
+    width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
     fontSize: '40px',
     fontFamily: "'VT323', monospace",
   },
-  cardR:{
-    color: "white",
-    viewHeight: "100%",
-    background: "linear-gradient(#1a2a6c, #b21f1f,#fdbb2d)",
-    fontFamily: "Arial",
-    textAlign: "center",
-    opacity: "0.7",
-    marginTop: "5px",
-    padding: "5px",
-    opacity: "0.8",
-    borderRadius: "20px",
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    flexWrap: "wrap",
-    fontSize: '20px',
-    fontFamily: "'VT323', monospace",
-  },
-  SavedE:{
+  header:{
     color: "white",
     viewHeight: "100%",
     background: "linear-gradient(#8E2DE2, #4A00E0)",
-    fontFamily: "Arial",
     textAlign: "center",
-    opacity: "0.7",
-    marginTop: "5px",
     padding: "5px",
     opacity: "0.8",
     borderRadius: "20px",
-    width: "100%",
+    width: "50%",
     marginLeft: "auto",
     marginRight: "auto",
     flexWrap: "wrap",
-    fontSize: '20px',
+    fontSize: '30px',
     fontFamily: "'VT323', monospace",
+  },
+  body: {
+    backgroundColor: 'white',
+    opacity: '0.8',
+    display: 'flex',
+    borderRadius: '5px',
+  },
+  question: {
+    color: "white",
+    viewHeight: "100%",
+    background: "linear-gradient(#8E2DE2, #4A00E0)",
+    textAlign: "center",
+    margin: "10px",
+    padding: "10px",
+    borderRadius: "20px",
+    width: "50%",
+    flexWrap: "wrap",
+    fontSize: '25px',
+    fontFamily: "'VT323', monospace",
+  },
+  response:{
+    color: "white",
+    viewHeight: "100%",
+    background: "linear-gradient(#b92b27, #1565C0)",
+    textAlign: "center",
+    marginTop: "10px",
+    padding: "10px",
+    borderRadius: "20px",
+    width: "50%",
+    flexWrap: "wrap",
+    fontSize: '25px',
+    fontFamily: "'VT323', monospace",
+  }, 
+  button: {
+    opacity: '1',
+    backgroundColor: 'deeppink',
+    borderColor: 'pink',
+    borderWidth: '1px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '10px',
+    // display: 'block',
+    paddingLeft: '50px',
+    paddingRight: '50px',
+    fontSize: '20px'
   }
 };
 
@@ -100,7 +97,8 @@ const Profile = () => {
   const userData = data?.me || {};
 
   // Function to handle explanation delete
-  const handleDeleteExplanation = async (_id) => {
+  const handleDeleteExplanation = async (explanationId) => {
+    console.log(explanationId);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -109,9 +107,9 @@ const Profile = () => {
 
     try {
       const { data } = await removeExplanation({
-        variables: { _id },
+        variables: { explanationId },
       });
-   
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -119,35 +117,38 @@ const Profile = () => {
 
   if (loading) {
     return <h2>LOADING...</h2>;
-  }
+  };
+  console.log(userData.explanations);
 
   return (
     <>
     <Jumbotron fluid style={styles.jumbo}>
         <Container>
-          <h1>Viewing {userData.username}'s explanations!</h1>
+          <h1>Viewing {userData.username}'s Explanations!</h1>
         </Container>
       </Jumbotron>
       <Container>
-        <h2 style={styles.SavedE}>
+        <h2 style={styles.header}>
           {userData.explanations?.length
-            ? `Viewing ${userData.explanations.length} saved ${
+            ? `You have ${userData.explanations.length} saved ${
                 userData.explanations.length === 1 ? 'explanation' : 'explanations'
-              }:`
+              }...`
             : 'You have no saved explanations! Head to Bryan Bot to begin your knowledge building journey!'}
         </h2>
-        <CardColumns>
+        <CardColumns style={{overflow:"auto", height:"500px"}}>
           {userData.explanations?.map((explanation) => {
             return (
-              <Card key={explanation._id} border="dark">
-                <Card.Body style={styles.cardMain}>
-                  <Card.Text style={styles.CardQ}>{explanation.question}</Card.Text>
-                  <Card.Text style={styles.cardR}>{explanation.response}</Card.Text>
+              <Card key={explanation.explanationId} border="dark" style={styles.body} >
+                <Card.Body className="">
+                  <Row>
+                  <Col style={styles.question}>Code Block: {explanation.question}</Col>                                               
+                  <Col style={styles.response}>Explanation: {explanation.response}</Col>
+                  </Row>
                   <Button
-                    className="btn-block btn-danger"
-                    onClick={() => handleDeleteExplanation(explanation._id)}
-                  >
-                    Delete this Explanation!
+                    style={styles.button}
+                    className="btn-danger"
+                    onClick={() => handleDeleteExplanation(explanation.explanationId)}>
+                    Delete
                   </Button>
                 </Card.Body>
               </Card>

@@ -1,9 +1,26 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, Container, Image, } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Image } from 'react-bootstrap';
 
 import Auth from "../../utils/auth";
+
+const styles = {
+  buttonsLO: {
+    fontSize: '30px',
+    marginLeft: 'auto',
+    marginRight: '40px',
+    alignItems: 'flex-end',     
+  },
+  buttonsLI: {
+    fontSize: '30px',
+    alignItems: 'flex-end', 
+    color: "white",
+    opacity: 0.8,
+    border: "none",
+    marginLeft: "5px"
+  },
+};
 
 const Header = () => {
   const logout = (event) => {
@@ -14,35 +31,44 @@ const Header = () => {
     <header className="Navbar">
       <Navbar bg="purple" variant="dark">
         <Container>
-        <Image 
-              alt="bryanbot"
-              src="./images/logo4.jpg"
-              width="100"
-              height="80"
-              className="d-inline-block align-top"
-            />{" "}
-          <Navbar.Brand href="./">BryanBot</Navbar.Brand>
+          <Nav.Link href="./contact"
+            to="./contact">
+        <Image
+            alt="bryanbot"
+            src="./images/logo4.jpg"
+            width="170"
+            height="110"
+            className="d-inline-block mt-3"  
+          />
+          </Nav.Link>
+          {" "}
+          <Navbar.Brand href="./" style={styles.buttonsLO} >BryanBot</Navbar.Brand>
+
           {Auth.loggedIn() ? (
             <>
-              <Link className="PH" to="./me">
+              <Nav.Link style={styles.buttonsLI} className="mr-5" href="./me" to="./me">
                 {Auth.getProfile().data.username}
-                
-              </Link>
-              <button className="PH" onClick={logout}>
+              </Nav.Link>
+              <Button style={styles.buttonsLI} type="button" className="btn btn-link" onClick={logout}>
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
+
             <>
-              <Nav className="me-auto">
-            <Nav.Link href="./Login" to="./Login">Login</Nav.Link>
-            <Nav.Link href="./Signup" to="./Signup">Signup</Nav.Link>
-          </Nav>
+              <Nav >
+                <Nav.Link href="./Login" to="./Login"
+                  style={{fontSize:30}}
+                    >Login</Nav.Link>
+                <Nav.Link href="./Signup" to="./Signup"
+                  style={{fontSize:30}}
+                >Signup</Nav.Link>
+              </Nav>
             </>
           )}
         </Container>
       </Navbar>
-     
+
     </header>
   );
 };

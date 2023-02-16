@@ -60,6 +60,14 @@ const styles = {
     position: "absolute"
   },
 
+  moon: {
+    marginRight: '0',
+    marginLeft: '1000px',
+    display: 'block',
+    position: 'absolute',
+    marginTop: '-100px'
+  }
+
 
 
 };
@@ -144,6 +152,28 @@ const Login = () => {
 
   return (
     <>
+      <Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars2}
+        height="80"
+      />
+
+<Image
+        alt="stars"
+        src="./images/stars.gif"
+        style={styles.stars1}
+        height="50"
+      />
+
+<Image
+        alt="moon"
+        src="./images/moon.gif"
+        style={styles.moon}
+        height="100"
+      />
+
+
       <Form onSubmit={handleFormSubmit} style={styles.body}>
         <Alert
           dismissible
