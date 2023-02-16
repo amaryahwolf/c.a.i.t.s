@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
-import { ADD_EXPLANATION } from '../utils/mutations';
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+import { ADD_EXPLANATION } from "../utils/mutations";
 
 // import Auth from '../utils/auth';
 
@@ -50,20 +50,20 @@ const styles = {
     marginRight: "auto",
   },
   submit: {
-    opacity: '1',
-    backgroundColor: 'deeppink',
-    borderColor: 'pink',
-    borderWidth: '1px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '10px',
-    display: 'block',
-    paddingLeft: '50px',
-    paddingRight: '50px',
-    fontSize: '20px',
+    opacity: "1",
+    backgroundColor: "deeppink",
+    borderColor: "pink",
+    borderWidth: "1px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "10px",
+    display: "block",
+    paddingLeft: "50px",
+    paddingRight: "50px",
+    fontSize: "20px",
   },
   spinnerContainer: {
-    position: "relative"
+    position: "relative",
   },
   motion: {
     position: "absolute",
@@ -71,37 +71,40 @@ const styles = {
     height: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
+  marquee: {
+    color: "white",
+    display: "flex",
+  },
 };
 
 const Home = () => {
-
-  const [userQuestion, setUserQuestion] = useState('');
+  const [userQuestion, setUserQuestion] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState('');
+  const [aiResponse, setAiResponse] = useState("");
   const [alert, setAlert] = useState(false);
 
   // Create addExplanation variable to use mutation
-  const [addExplanation, { error }] = useMutation(ADD_EXPLANATION)
+  const [addExplanation, { error }] = useMutation(ADD_EXPLANATION);
   const { loading, data } = useQuery(QUERY_ME);
 
   const userData = data?.me || null;
-  console.log(userData)
+  console.log(userData);
 
   useEffect(() => {
-    console.log(aiResponse)
-  }, [aiResponse])
+    console.log(aiResponse);
+  }, [aiResponse]);
 
   // Method to send user question to AI and return response
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    if(!userData) {
+    if (!userData) {
       setAlert(true);
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
 
     if (!userQuestion) {
       return false;
@@ -111,12 +114,12 @@ const Home = () => {
       const { data } = await addExplanation({
         variables: {
           question: userQuestion,
-          response: aiResponse
+          response: aiResponse,
         },
       });
-      console.log(data)
-      setAiResponse(data.addExplanation.response)
-      setIsLoading(false)
+      console.log(data);
+      setAiResponse(data.addExplanation.response);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -125,9 +128,9 @@ const Home = () => {
   // Method to clear forms so user can enter next code snippet
   const clearForms = async (event) => {
     event.preventDefault();
-    setAiResponse('');
-    setUserQuestion('');
-  }
+    setAiResponse("");
+    setUserQuestion("");
+  };
 
   // Method to copy AI's response to clipboard
   const handleCopy = async (event) => {
@@ -136,10 +139,13 @@ const Home = () => {
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(copyText.value);
-  }
+  };
 
   return (
     <>
+      <div class="example5" style={styles.marquee}>
+        <h3>Welcome to BryanBot 🤖 Get your code translated here! </h3>
+      </div>
       <Container style={styles.containerStyle}>
         <Container fluid>
           <Form onSubmit={handleFormSubmit}>
@@ -152,43 +158,65 @@ const Home = () => {
               placeholder="Enter your code snippet here!"
               style={styles.question}
             />
-            <Button type="submit" variant="success" style={styles.submit} onClick={() => setAlert()}>
+            <Button
+              type="submit"
+              variant="success"
+              style={styles.submit}
+              onClick={() => setAlert()}
+            >
               Submit Question
             </Button>
             {alert && (
-             <Alert variant="primary" onClose={() => setAlert(false)} dismissible>
-             <Alert.Heading>Oops!</Alert.Heading>
-             <p>
-               Please <a href="./login">login</a> or <a href="./signup">signup</a> to begin your journey with BryanBot!
-             </p>
-           </Alert>
-          )}
+              <Alert
+                variant="primary"
+                onClose={() => setAlert(false)}
+                dismissible
+              >
+                <Alert.Heading>Oops!</Alert.Heading>
+                <p>
+                  Please <a href="./login">login</a> or{" "}
+                  <a href="./signup">signup</a> to begin your journey with
+                  BryanBot!
+                </p>
+              </Alert>
+            )}
           </Form>
         </Container>
-        
-          <div style={styles.spinnerContainer}>
-            {isLoading && (
-              <motion.div initial={{ opacity: 1 }} exit={{ opacity: 1 }} animate={{ opacity: 1 }} style={styles.motion}>
-                <div className="spinner-border text-light" role="status">
-                  {/* TODO: replace with spinning BryanBot icon */}
-                  <span className="visually-hidden">Loading...</span>
-                </div>
-              </motion.div>
-            )}
-            <Container
-              fluid
-              name="aiResponse"
-              value={aiResponse}
-              placeholder="View BryanBot's explanation here!"
-              style={styles.explanation}
-              as="textarea">
+
+        <div style={styles.spinnerContainer}>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              style={styles.motion}
+            >
+              <div className="spinner-border text-light" role="status">
+                {/* TODO: replace with spinning BryanBot icon */}
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </motion.div>
+          )}
+          <Container
+            fluid
+            name="aiResponse"
+            value={aiResponse}
+            placeholder="View BryanBot's explanation here!"
+            style={styles.explanation}
+            as="textarea"
+          >
             {/* <FontAwesomeIcon icon="fa-regular fa-copy" onClick={handleCopy}/> */}
-            </Container>
-           
-            <Button type="submit" variant="success" style={styles.submit} onClick={clearForms}>
-              Next Question!
-            </Button>
-          </div>    
+          </Container>
+
+          <Button
+            type="submit"
+            variant="success"
+            style={styles.submit}
+            onClick={clearForms}
+          >
+            Next Question!
+          </Button>
+        </div>
       </Container>
     </>
   );
