@@ -105,11 +105,7 @@ const Home = () => {
   const [alert, setAlert] = useState(false);
 
   // Create addExplanation variable to use mutation
-  const [addExplanation, { error }] = useMutation(ADD_EXPLANATION, {
-    fetchPolicy: "no-cache"
-  }
-
-);
+  const [addExplanation, { error }] = useMutation(ADD_EXPLANATION);
   const { loading, data } = useQuery(QUERY_ME, {
     fetchPolicy: "no-cache"
   });

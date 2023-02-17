@@ -112,9 +112,7 @@ const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME, {
     fetchPolicy: "no-cache"
   });
-  const [removeExplanation, { error }] = useMutation(REMOVE_EXPLANATION, {
-    fetchPolicy: "no-cache"
-  });
+  const [removeExplanation, { error }] = useMutation(REMOVE_EXPLANATION);
 
   const userData = data?.me || {};
 
