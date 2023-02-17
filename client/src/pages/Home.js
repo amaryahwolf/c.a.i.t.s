@@ -110,7 +110,9 @@ const Home = () => {
   }
 
 );
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME, {
+    fetchPolicy: "no-cache"
+  });
 
   const userData = data?.me || null;
   console.log(userData);
