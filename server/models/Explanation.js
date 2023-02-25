@@ -2,19 +2,19 @@ const { Schema, Types } = require('mongoose');
 
 const explanationSchema = new Schema({
     explanationId: {
-        type:Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
     },
     question: {
-        type:String,       
+        type: String,
     },
     response: {
-        type: String,  
+        type: String,
     },
 },
-{
-    id: false
-}
+    {
+        id: false
+    }
 );
 
 module.exports = explanationSchema;

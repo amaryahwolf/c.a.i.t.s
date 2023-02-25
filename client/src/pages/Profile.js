@@ -152,7 +152,7 @@ const Profile = () => {
       />
 
 
-<Image
+      <Image
         alt="stars"
         src="./images/stars.gif"
         style={styles.stars2}

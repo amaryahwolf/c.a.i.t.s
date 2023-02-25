@@ -10,13 +10,13 @@ const styles = {
     fontSize: '30px',
     marginLeft: 'auto',
     marginRight: '20px',
-    alignItems: 'flex-end',     
+    alignItems: 'flex-end',
     textDecoration: "none",
     color: "white"
   },
   buttonsLI: {
     fontSize: '30px',
-    alignItems: 'flex-end', 
+    alignItems: 'flex-end',
     color: "white",
     opacity: 0.8,
     border: "none",
@@ -36,18 +36,18 @@ const Header = () => {
       <Navbar bg="purple" variant="dark">
         <Container>
           <Link
-             to="/contact">
-        <Image
-            alt="bryanbot"
-            src="./images/logo4.jpg"
-            width="170"
-            height="110"
-            className="d-inline-block mt-3"  
-          />
+            to="/contact">
+            <Image
+              alt="bryanbot"
+              src="./images/logo4.jpg"
+              width="170"
+              height="110"
+              className="d-inline-block mt-3"
+            />
           </Link>
           {" "}
-          <Link to="/" style={styles.buttonsLO} > 
-          <Navbar >BryanBot</Navbar>
+          <Link to="/" style={styles.buttonsLO} >
+            <Navbar >BryanBot</Navbar>
           </Link>
 
           {Auth.loggedIn() ? (
@@ -66,7 +66,7 @@ const Header = () => {
                 <Link to="/login"
                   style={styles.buttonsLI}
                   className="mr-5"
-                    >Login</Link>
+                >Login</Link>
                 <Link to="/signup"
                   style={styles.buttonsLI}
                   className="mr-5"

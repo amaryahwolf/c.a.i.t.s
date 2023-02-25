@@ -4,7 +4,7 @@ const Explanations = () => {
 
   return (
     <div className="PH">
-        Explanations
+      Explanations
     </div>
   );
 };

@@ -11,12 +11,12 @@ const styles = {
         width: "70%",
         marginLeft: "auto",
         marginRight: "auto",
-      },
-      text: {
+    },
+    text: {
         color: "black",
         fontSize: "30px"
 
-      }
+    }
 }
 
 const Contact = () => {

@@ -59,18 +59,18 @@ const styles = {
     marginRight: '0',
     marginLeft: '1100px',
     display: 'block',
-        bottom: '10px',
-        position: 'fixed'
-       
+    bottom: '10px',
+    position: 'fixed'
+
   },
 
   pigeon1: {
     marginRight: '0',
     marginLeft: '1000px',
     display: 'block',
-        bottom: '10px',
-        position: 'fixed'
-       
+    bottom: '10px',
+    position: 'fixed'
+
   },
 
 
@@ -81,7 +81,7 @@ const styles = {
     display: 'inline-block',
     position: 'absolute',
   },
-  
+
   stars2: {
     marginRight: '0',
     marginLeft: '1100px',
@@ -100,7 +100,7 @@ const styles = {
 
   },
 
- hello: {
+  hello: {
 
     marginRight: 'auto',
     marginLeft: '50px',
@@ -182,7 +182,7 @@ const Signup = () => {
   return (
     <>
       <h1 style={styles.heading}> Why did the robot chicken cross the road?
-He was programmed to. </h1>
+        He was programmed to. </h1>
       {/* This is needed for the validation functionality above */}
 
       <Image
@@ -200,7 +200,7 @@ He was programmed to. </h1>
         height="80"
       />
 
-<Image
+      <Image
         alt="stars"
         src="./images/stars.gif"
         style={styles.stars2}
@@ -271,7 +271,7 @@ He was programmed to. </h1>
         className="float-right"
       />
 
-<Image
+      <Image
         alt="pigeon1"
         src="./images/pigeon.gif"
         style={styles.pigeon1}
@@ -281,7 +281,7 @@ He was programmed to. </h1>
       />
 
 
-<Image
+      <Image
         alt="hello"
         src="./images/hellothere.png"
         style={styles.hello}
@@ -289,7 +289,7 @@ He was programmed to. </h1>
         height="50"
       />
 
-<Image
+      <Image
         alt="vanessa"
         src="./images/vanessa.png"
         style={styles.vanessa}

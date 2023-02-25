@@ -7,11 +7,13 @@
 
 }
 
-.example5,{
-  height: 50px;
-  overflow: hidden;
-  position: relative;
+.example5,
+{
+height: 50px;
+overflow: hidden;
+position: relative;
 }
+
 .example5 h3 {
   position: absolute;
   width: 100%;
@@ -31,32 +33,42 @@
   -webkit-animation: example1 15s linear infinite;
   animation: example1 15s linear infinite;
 }
+
 /* Move it (define the animation) */
 @-moz-keyframes example1 {
   0% {
     -moz-transform: translateX(100%);
   }
+
   100% {
     -moz-transform: translateX(-100%);
   }
 }
+
 @-webkit-keyframes example1 {
   0% {
     -webkit-transform: translateX(100%);
   }
+
   100% {
     -webkit-transform: translateX(-100%);
   }
 }
+
 @keyframes example1 {
   0% {
-    -moz-transform: translateX(100%); /* Firefox bug fix */
-    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    -moz-transform: translateX(100%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(100%);
+    /* Firefox bug fix */
     transform: translateX(100%);
   }
+
   100% {
-    -moz-transform: translateX(-100%); /* Firefox bug fix */
-    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    -moz-transform: translateX(-100%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(-100%);
+    /* Firefox bug fix */
     transform: translateX(-100%);
   }
 }

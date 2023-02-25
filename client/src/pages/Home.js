@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Alert, Image} from "react-bootstrap";
+import { Container, Form, Button, Alert, Image } from "react-bootstrap";
 import { motion } from 'framer-motion';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -162,7 +162,7 @@ const Home = () => {
     navigator.clipboard.writeText(copyText.value);
   };
 
- 
+
   return (
     <>
       <div class="example5" style={styles.marquee}>
@@ -214,7 +214,7 @@ const Home = () => {
               style={styles.motion}
             >
               <div role="status">
-              <img src="https://piskel-imgstore-b.appspot.com/img/38cc5c91-ae32-11ed-9b84-bb8b9bc91f9d.gif" alt="loading..." />
+                <img src="https://piskel-imgstore-b.appspot.com/img/38cc5c91-ae32-11ed-9b84-bb8b9bc91f9d.gif" alt="loading..." />
                 <span className="visually-hidden">Loading...</span>
               </div>
             </motion.div>
@@ -249,7 +249,7 @@ const Home = () => {
         height="100"
       />
 
-<Image
+      <Image
         alt="amaryah"
         src="./images/amaryah.png"
         style={styles.amaryah}
